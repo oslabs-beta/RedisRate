@@ -4,22 +4,28 @@ const redisDb = redis.createClient()
 
 const DbController = {};
 
-DbController.test = (req, res, next) => {
-  redisDb.set('testK', 'testVal', redis.print);
-  redisDb.get('testK', redis.print);
-  next();
+DbController.checkCache = (req, res, next) => {
+  // get the id sent from the frontend endpoint
+  // make a query for the Redis cache
+  redisDb.get(`user:${req.params.id}`, (err, value) => {
+    // if the id is found
+    if (value) {
+      // save the username to be used on the frontEnd
+      res.locals.testData = value;
+      next();
+    } else if (err) {
+      console.log('Could not get data from cache: ', err)
+      next();
+    }
+  });
 }
 
-redisDb.set('testK', 'testVal', redis.print);
-redisDb.get('testK', redis.print);
+DbController.mongoDb = (req, res, next) => {
+  // query mongoDB for the user id
 
-// recieve the request from the server file
+  // store the username in the redis cache and set expiration
 
-  // look for the requested data in redis cache
-    //if found, send back to front end
-
-  // if not found, send query to mongo
-    // save in cache
-    // return data to frontend
+  // send the username back for use in frontend
+}
 
 module.exports = DbController;
