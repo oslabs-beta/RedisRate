@@ -1,0 +1,22 @@
+{
+  "name": "RedisRate",
+  "version": "1.0.0",
+  "description": "'Analytical Tool for Redis Performance'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/goRedis.git"
+  },
+  "author": "Team Cache Me if You Can",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/goRedis.git"
+  },
+  "homepage": "https://github.com/oslabs-beta/goRedis#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
