@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "RedisRate",
   "version": "1.0.0",
   "description": "'Analytical Tool for Redis Performance'",
   "main": "index.js",
