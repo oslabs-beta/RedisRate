@@ -1,7 +1,7 @@
 // require module to easily use mongodb
 const mongoose = require('mongoose')
 // our db URI
-const URI = "mongodb+srv://mongodb:mongoDb@cluster0.drnfb.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
+const URI = 'secret';
 // connect to said db
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => { console.log('you are connected') });
 
