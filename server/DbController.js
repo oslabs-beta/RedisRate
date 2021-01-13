@@ -2,6 +2,8 @@
 const redis = require('redis');
 const redisDb = redis.createClient()
 
+// requirements for MongoDB
+
 const DbController = {};
 
 DbController.checkCache = (req, res, next) => {
@@ -22,10 +24,18 @@ DbController.checkCache = (req, res, next) => {
 
 DbController.mongoDb = (req, res, next) => {
   // query mongoDB for the user id
-
-  // store the username in the redis cache and set expiration
-
-  // send the username back for use in frontend
+  mongo.findOne({ name: req.body })
+  // store the username in the redis cache and set expiration (SET user:3 super-programmer-navi EX 60)
+    .then((entry) => {
+      redisDb.set('name', entry, /* set expiration */ )
+    })
+    // send the username back for use in frontend
+    .then(() => {
+      console.log('Cached your entry:', req.body)
+    })
+    .catch((err) => {
+      console.log('Could not find entry in Mongo:', err)
+    })
 }
 
 module.exports = DbController;

@@ -22,17 +22,18 @@ app.use((req, res, next) => {
   Route the request to databse controllers
 */
 
-// test route
-app.use('/test/:id', 
+// 
+app.post('/data', 
   controller.checkCache,
+  controller.mongoDb,
   (req, res) => {
     // send the data from the cache to the frontend
     res.json(res.locals.testData);
 })
 
+// send html file for frontend
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'))
-  
 });
 
 
