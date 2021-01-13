@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/oslabs-beta/goRedis#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11"
   }
 }
