@@ -31,8 +31,9 @@ DbController.mongoDb = (req, res, next) => {
   mongoDB.findById(req.body.id)
   .then(result => {
     res.locals.name = result.name;
+    // set the retrieved data in the cache
     redisDb.set(req.body.id, result.name)
-    redisDb.expire(req.body.id, 200)
+    redisDb.expire(req.body.id, 300)
     next();
   })
   .catch(err => console.log(err))
