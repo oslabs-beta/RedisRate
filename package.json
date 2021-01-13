@@ -4,6 +4,7 @@
   "description": "'Analytical Tool for Redis Performance'",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/oslabs-beta/goRedis#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "redis": "^3.0.2"
   }
 }
