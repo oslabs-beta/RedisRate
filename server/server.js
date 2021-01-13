@@ -3,6 +3,8 @@ const app = express();
 const PORT = 3000;
 const path = require('path');
 
+require('dotenv').config();
+
 const controller = require('./DbController.js')
 const redis = require('redis');
 const redisDb = redis.createClient()
