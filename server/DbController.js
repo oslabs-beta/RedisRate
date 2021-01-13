@@ -3,39 +3,40 @@ const redis = require('redis');
 const redisDb = redis.createClient()
 
 // requirements for MongoDB
+const mongoDB = require('../mongodb.js');
 
 const DbController = {};
 
 DbController.checkCache = (req, res, next) => {
-  // get the id sent from the frontend endpoint
-  // make a query for the Redis cache
-  redisDb.get(`user:${req.params.id}`, (err, value) => {
+  // get the query string send from the client
+  // maybe an id
+
+  redisDb.get(req.body.id, (err, value) => {
     // if the id is found
     if (value) {
+      console.log('found name in cache SO FAST')
       // save the username to be used on the frontEnd
       res.locals.testData = value;
-      next();
-    } else if (err) {
-      console.log('Could not get data from cache: ', err)
+      res.status(200).json(value);
+    } else if (!value) {
       next();
     }
   });
 }
 
 DbController.mongoDb = (req, res, next) => {
-  // query mongoDB for the user id
-  mongo.findOne({ name: req.body })
-  // store the username in the redis cache and set expiration (SET user:3 super-programmer-navi EX 60)
-    .then((entry) => {
-      redisDb.set('name', entry, /* set expiration */ )
-    })
-    // send the username back for use in frontend
-    .then(() => {
-      console.log('Cached your entry:', req.body)
-    })
-    .catch((err) => {
-      console.log('Could not find entry in Mongo:', err)
-    })
+  console.log('Did not find in cache, looking in mongo')
+  // look for listing id based on schema
+  // 'name':'Ribeira Charming Duplex'}
+  mongoDB.findById(req.body.id)
+  .then(result => {
+    res.locals.name = result.name;
+    redisDb.set(req.body.id, result.name)
+    redisDb.expire(req.body.id, 200)
+    next();
+  })
+  .catch(err => console.log(err))
 }
+    
 
 module.exports = DbController;

@@ -28,7 +28,7 @@ app.post('/data',
   controller.mongoDb,
   (req, res) => {
     // send the data from the cache to the frontend
-    res.json(res.locals.testData);
+    res.json(res.locals.name);
 })
 
 // send html file for frontend
