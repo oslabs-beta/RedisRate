@@ -3,7 +3,7 @@ const redis = require('redis');
 const redisDb = redis.createClient()
 
 // requirements for MongoDB
-const mongoDB = require('../mongodb.js');
+const mongoDB = require('./mongodb.js');
 
 const DbController = {};
 
