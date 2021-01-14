@@ -3,18 +3,14 @@ const app = express();
 const PORT = 3000;
 const path = require('path');
 
-// const controller = require('./DbController.js')
+require('dotenv').config();
+
+const controller = require('./DbController.js')
 const redis = require('redis');
 const redisDb = redis.createClient()
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
-// app.get('/test', 
-//   controller.test,
-//   (req, res) => {
-//     res.end();
-// })
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -28,12 +24,19 @@ app.use((req, res, next) => {
   Route the request to databse controllers
 */
 
+// 
+app.post('/data', 
+  controller.checkCache,
+  controller.mongoDb,
+  (req, res) => {
+    // send the data from the cache to the frontend
+    res.json(res.locals.name);
+})
+
+// send html file for frontend
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'))
-  
 });
 
-redisDb.set('testK', 'testVal', redis.print);
-redisDb.get('testK', redis.print);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
