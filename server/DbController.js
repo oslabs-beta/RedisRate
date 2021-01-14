@@ -39,16 +39,5 @@ DbController.mongoDb = (req, res, next) => {
   .catch(err => console.log(err))
 }
     
-DbController.getIds = (req, res, next) => {
-  mongoDB.find({})
-  .then(result => {
-    const ids = [];
-    for (let i = 0; i < 500; i++) {
-      ids.push(result[i]._id)
-    }
-    res.locals.ids = ids;
-    next();
-  })
-}
 
 module.exports = DbController;

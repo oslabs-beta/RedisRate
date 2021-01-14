@@ -23,15 +23,7 @@ app.use((req, res, next) => {
   Get requests for data from front end
   Route the request to databse controllers
 */
-
-app.get('/ids',
-  controller.getIds,
-  (req, res) => {
-    res.status(200).json(res.locals.ids)
-  }
-)
-
-// 
+ 
 app.post('/data', 
   controller.checkCache,
   controller.mongoDb,
