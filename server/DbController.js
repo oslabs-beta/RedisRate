@@ -33,11 +33,22 @@ DbController.mongoDb = (req, res, next) => {
     res.locals.name = result.name;
     // set the retrieved data in the cache
     redisDb.set(req.body.id, result.name)
-    redisDb.expire(req.body.id, 300)
+    redisDb.expire(req.body.id, 500)
     next();
   })
   .catch(err => console.log(err))
 }
     
+DbController.getIds = (req, res, next) => {
+  mongoDB.find({})
+  .then(result => {
+    const ids = [];
+    for (let i = 0; i < 500; i++) {
+      ids.push(result[i]._id)
+    }
+    res.locals.ids = ids;
+    next();
+  })
+}
 
 module.exports = DbController;

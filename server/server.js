@@ -24,6 +24,13 @@ app.use((req, res, next) => {
   Route the request to databse controllers
 */
 
+app.get('/ids',
+  controller.getIds,
+  (req, res) => {
+    res.status(200).json(res.locals.ids)
+  }
+)
+
 // 
 app.post('/data', 
   controller.checkCache,
