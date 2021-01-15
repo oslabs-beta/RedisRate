@@ -10,34 +10,35 @@ import ReactDom from 'react-dom';
 
 const Login = ( ) => {
 
-  const [DBInfo, setDBInfo] = useState({
-    port: '',
-    ipaddress: '',
-    username: '',
-    password: ''
-  })
+  const [port, setPort] = useState('')
+  const [ipaddress, setIpaddress] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  
 
-  const onChange = (e) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
-    const { port, ipaddress, username, password } = e.target;
-    setDBInfo({
-      port,
-      ipaddress,
-      username,
-      password
+    // send values in POST
+    fetch('eventual endpoint to server', {
+      body: JSON.stringify({
+        port,
+        ipaddress,
+        username,
+        password
+      }),
+      method: 'POST',
+      headers: {'Content-Type': 'Application/JSON'},
     })
-    console.log(DBInfo)
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log('in submit')
-    // const { port, ipaddress, username, password } = e.target.value;
-   console.log(e.target.value)
+    .then(response => {
+      response.json();
+      console.log('Sent user data to server:', response)
+    })
+    .catch(err => {
+      console.log('could not send user info:', err)
+    })
   }
 
   
-
   return(
     <div id="loginPage">
       <div>Logo</div>
@@ -45,24 +46,24 @@ const Login = ( ) => {
         <form onSubmit={onSubmit}>
           <label>PORT</label>
             <input
-              onChange={onChange}
+              onChange={e => setPort(e.target.value)}
               name="port" 
-              value={DBInfo.port}></input>
+              defaultValue={port}></input>
           <label>IP Address</label>
             <input 
-              onChange={onChange}
+              onChange={e => setIpaddress(e.target.value)}
               name="ipaddress" 
-              value={DBInfo.ipaddress}></input>
+              value={ipaddress}></input>
           <label>Username</label>
             <input 
-              onChange={onChange}
+              onChange={e => setUsername(e.target.value)}
               name="username" 
-              value={DBInfo.username}></input>
+              value={username}></input>
           <label>Password</label>
             <input 
-              onChange={onChange}
+              onChange={e => setPassword(e.target.value)}
               name="password" 
-              value={DBInfo.password}
+              value={password}
               type="password"></input>
           <input type="submit" value="Submit"></input>
         </form>
