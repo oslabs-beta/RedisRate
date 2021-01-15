@@ -2,9 +2,12 @@
   "name": "RedisRate",
   "version": "1.0.0",
   "description": "'Analytical Tool for Redis Performance'",
-  "main": "index.js",
+  "main": "./dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:electron": "NODE_ENV=development webpack --config webpack.electron.config.js --mode development && electron .",
+    "dev:react": "NODE_ENV=development webpack serve --config webpack.react.config.js --mode development"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,26 @@
   },
   "homepage": "https://github.com/oslabs-beta/goRedis#readme",
   "dependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.11"
+    "mongoose": "^5.11.11",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "electron": "^11.2.0",
+    "html-webpack-plugin": "^4.5.1",
+    "webpack": "^5.14.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.2"
   }
 }
