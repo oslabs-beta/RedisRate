@@ -14,7 +14,7 @@ const App = () => {
       <h1>
         Navi and Unnie HERE!
       </h1>
-    <Graph />
+    {/* <Graph /> */}
     {/* <TheLine /> */}
     <ThePie />
     </div>
