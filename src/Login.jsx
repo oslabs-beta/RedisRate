@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import ReactDom from 'react-dom';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
-// download react-router-packages
+import React, { useState, useEffect, useContext } from 'react';
+import AppContext from "./context/index";
+import Test from './Test.jsx'
 
 const Login = ( ) => {
 
-  const [port, setPort] = useState('')
-  const [ipaddress, setIpaddress] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const {port, setPort} = useContext(AppContext);
+  const {ipaddress, setIpaddress} = useContext(AppContext);
+  const {username, setUsername} = useContext(AppContext);
+  const {password, setPassword} = useContext(AppContext);
   
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     // send values in POST
-    fetch('eventual endpoint to server', {
+    fetch('/connect', {
       body: JSON.stringify({
         port,
         ipaddress,
@@ -40,7 +34,7 @@ const Login = ( ) => {
 
   
   return(
-    <div id="loginPage">
+    <div>
       <div>Logo</div>
       <div>
         <form onSubmit={onSubmit}>
@@ -67,6 +61,7 @@ const Login = ( ) => {
               type="password"></input>
           <input type="submit" value="Submit"></input>
         </form>
+        <Test />
       </div>
     </div>
   )
