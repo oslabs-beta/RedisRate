@@ -1,14 +1,21 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import ReactDom from 'react-dom';
+
 import Graph from '../src/graph';
 import TheLine from '../src/line_graph';
 import ThePie from '../src/pie_donut';
+import Login from './Login.jsx';
+import ContextProvider from './context/ContextProvider';
+
+
 
 const mainElement = document.createElement('div');
 document.body.appendChild(mainElement);
 document.title = 'Redis Rate';
 
 const App = () => {
+
   return (
     <div>
       <h1>
@@ -17,8 +24,17 @@ const App = () => {
     {/* <Graph /> */}
     {/* <TheLine /> */}
     <ThePie />
+    <Login />
     </div>
   )
 }
 
-ReactDom.render(<App />, mainElement);
+ReactDom.render(
+  <React.StrictMode>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
+  </React.StrictMode>, 
+  mainElement
+);
+
