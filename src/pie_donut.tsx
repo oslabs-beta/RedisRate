@@ -31,15 +31,15 @@ const state = {
     //     }));
     //   }
 
-      componentDidMount(){
-        fetch('https://localhost:3000')
-          .then(res => res.json())
-          .then(data => {
-            state.datasets[0].data[totalMemory] = data.body['1'],
-            usedMemory = data.body['2']
-          }
-          )
-        }
+      // componentDidMount(){
+      //   fetch('https://localhost:3000')
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       state.datasets[0].data[totalMemory] = data.body['1'],
+      //       usedMemory = data.body['2']
+      //     }
+      //     )
+      //   }
     
 
     render() {
