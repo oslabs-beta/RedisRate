@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var mainWindow;
+var mainWindow; // what does this mean really
 
 function createWindow() {
   mainWindow = new electron__WEBPACK_IMPORTED_MODULE_0__.BrowserWindow({
