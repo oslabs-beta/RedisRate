@@ -6,7 +6,7 @@ const controller = {};
 
 controller.redisConnect = (req, res, next) => {
   // grab user info off request body
-  const { port, ipaddress, username, password } = req.body
+  const { port, ipaddress, username, password } = req.body;
   console.log('from controller:', port)
   // use user data from frontend to create a redis client
   //const redisDb = redis.createClient(/* port, ipaddress */)

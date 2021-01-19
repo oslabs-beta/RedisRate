@@ -24,6 +24,7 @@ const Login = ( ) => {
       headers: {'Content-Type': 'Application/JSON'},
     })
     .then(response => {
+      // save the response data in the overall app context object
       response.json();
       console.log('Sent user data to server:', response)
     })

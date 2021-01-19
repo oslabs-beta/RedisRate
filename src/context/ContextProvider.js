@@ -19,6 +19,7 @@ const ContextProvider = ({ children }) => {
     username,
     setPassword,
     password,
+    total_memory,
   };
 
   return (
