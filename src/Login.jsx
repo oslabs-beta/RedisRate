@@ -24,7 +24,7 @@ const Login = ( ) => {
       headers: {'Content-Type': 'Application/JSON'},
     })
     .then(response => {
-      response.json();
+      // response.json();
       console.log('Sent user data to server:', response)
     })
     .catch(err => {
