@@ -32,11 +32,7 @@ module.exports = {
     hot: true,
     port: 3000,
     publicPath: '/',
-<<<<<<< HEAD
-    proxy: { '*': { target: 'http://localhost:4000' } },
-=======
     proxy: {'*': {target: 'http://localhost:4000'}}
->>>>>>> 92fa436cb06af4417cd9c32d44c8a04a8f79614c
   },
   output: {
     path: path.resolve(__dirname, '../dist/renderer'),
