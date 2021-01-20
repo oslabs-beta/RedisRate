@@ -1,0 +1,12 @@
+#loginPage {
+  display: flex;
+  flex-direction: row;
+}
+
+#logo {
+  font-size: 40px;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+}
