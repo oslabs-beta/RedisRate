@@ -1,9 +1,5 @@
 // require module to easily use mongodb
 const mongoose = require('mongoose')
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 const URI = process.env.SECRET;
 
 // connect to said db

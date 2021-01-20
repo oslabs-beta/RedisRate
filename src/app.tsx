@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import ReactDom from 'react-dom';
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Graph from '../src/graph';
 import TheLine from '../src/line_graph';
 import ThePie from '../src/pie_donut';
@@ -14,10 +14,6 @@ document.title = 'Redis Rate';
 const App = () => {
   return (
     <div>
-      <h1>Navi and Unnie HERE!</h1>
-      {/* <Graph /> */}
-      {/* <TheLine /> */}
-      <ThePie />
       <Login />
     </div>
   );
@@ -26,7 +22,9 @@ const App = () => {
 ReactDom.render(
   <React.StrictMode>
     <ContextProvider>
-      <App />
+      <Router> 
+        <App />
+      </Router>
     </ContextProvider>
   </React.StrictMode>,
   mainElement
