@@ -18,6 +18,11 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   devServer: {
@@ -27,14 +32,16 @@ module.exports = {
     hot: true,
     port: 3000,
     publicPath: '/',
+<<<<<<< HEAD
     proxy: { '*': { target: 'http://localhost:4000' } },
+=======
+    proxy: {'*': {target: 'http://localhost:4000'}}
+>>>>>>> 92fa436cb06af4417cd9c32d44c8a04a8f79614c
   },
   output: {
     path: path.resolve(__dirname, '../dist/renderer'),
     filename: 'js/[name].js',
     publicPath: './',
   },
-  plugins: [
-    new HtmlWebpackPlugin(),
-  ],
+  plugins: [new HtmlWebpackPlugin()],
 };

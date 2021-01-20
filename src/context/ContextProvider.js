@@ -1,9 +1,10 @@
 /*
-  Create initial state for context provider
+  Create initial state for context provider,
+  also saves information of context 
 */
 
-import React, { useState } from "react";
-import AppContext from './index.js'
+import React, { useState } from 'react';
+import AppContext from './index.js';
 
 const ContextProvider = ({ children }) => {
 
@@ -11,8 +12,7 @@ const ContextProvider = ({ children }) => {
   const [ipaddress, setIpaddress] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-
+  const [memoryData, setMemoryData] = useState({});
   const context = {
     setPort,
     port,
@@ -22,13 +22,13 @@ const ContextProvider = ({ children }) => {
     username,
     setPassword,
     password,
+    setMemoryData,
+    memoryData
   };
+// add more context for usedMemory and totalMemory then make the 
+// Memory subscibe to it.
 
-  return (
-    <AppContext.Provider value={ context }>
-      {children}
-    </AppContext.Provider>
-  );
-}
+  return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
+};
 
 export default ContextProvider;
