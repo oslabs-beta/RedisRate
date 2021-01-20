@@ -18,6 +18,11 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   devServer: {
@@ -25,15 +30,14 @@ module.exports = {
     historyApiFallback: true,
     compress: true,
     hot: true,
-    port: 4000,
+    port: 3000,
     publicPath: '/',
+    proxy: {'*': {target: 'http://localhost:4000'}}
   },
   output: {
     path: path.resolve(__dirname, '../dist/renderer'),
     filename: 'js/[name].js',
     publicPath: './',
   },
-  plugins: [
-    new HtmlWebpackPlugin(),
-  ],
+  plugins: [new HtmlWebpackPlugin()],
 };

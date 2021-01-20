@@ -35,6 +35,6 @@ controller.redisConnect = (req, res, next) => {
   // authorize the redis client
   //redisDb.auth(/* username, password*/)
   return next();
-}
+};
 
 module.exports = controller;
