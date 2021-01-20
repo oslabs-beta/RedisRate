@@ -24,6 +24,8 @@ const ContextProvider = ({ children }) => {
     setMemoryData,
     memoryData
   };
+// add more context for usedMemory and totalMemory then make the 
+// Memory subscibe to it.
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };
