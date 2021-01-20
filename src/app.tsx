@@ -24,6 +24,7 @@ const App = () => {
     {/* <Graph /> */}
     {/* <TheLine /> */}
     <ThePie />
+    <TheLine />
     <Login />
     </div>
   )

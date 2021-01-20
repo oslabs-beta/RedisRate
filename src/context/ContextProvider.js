@@ -6,10 +6,13 @@ import React, { useState } from "react";
 import AppContext from './index.js'
 
 const ContextProvider = ({ children }) => {
+
   const [port, setPort] = useState('');
   const [ipaddress, setIpaddress] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+
   const context = {
     setPort,
     port,
@@ -19,7 +22,6 @@ const ContextProvider = ({ children }) => {
     username,
     setPassword,
     password,
-    total_memory,
   };
 
   return (
