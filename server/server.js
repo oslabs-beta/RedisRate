@@ -14,10 +14,11 @@ app.use(bodyParser.json());
 app.post('/connect',
   controller.redisConnect,
   (req, res) => {
-    res.status(200).end();
+    console.log(res.locals);
+    res.status(200).json({ login: res.locals.login, allMemory: res.locals.allMemory, usedMemory: res.locals.usedMemory });
   }
 )
 
 app.listen(PORT, () => {
-  console.log(`You are listening on ${PORT}`)
+  console.log(`We be LISTENING: ${PORT}`)
 })
