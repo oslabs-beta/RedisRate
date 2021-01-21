@@ -34,21 +34,20 @@ const Login = () => {
 
       headers: {'Content-Type': 'Application/JSON'},
     })
-    .then(response => {
-      // response.json();
-      console.log('Sent user data to server:', response)
-    })
-    .catch(err => {
-      console.log('could not send user info:', err)
-    })
-      .then((response) => {
+    .then(response => response.json())
+    .then((response) => {
         // set isUserLoggedIn to true
-        setIsUserLoggedIn(true);
-        console.log('Sent user data to server:', response);
-      })
-      .catch((err) => {
-        console.log('could not send user info:', err);
-      });
+       
+      //  const { login} = response.body;
+      console.log('this be the body response' + JSON.stringify(response));
+      if(login === true) setIsUserLoggedIn(true);
+      if(login === false) console.log('Invalid Login');
+      console.log('Sent user data to server:', response);
+    })
+
+    .catch((err) => {
+      console.log('could not send user info:', err);
+    });
   };
 
   useEffect(() => {
