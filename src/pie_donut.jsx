@@ -2,8 +2,6 @@ import { Pie, Doughnut } from 'react-chartjs-2';
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
 
-
-
 const ThePie = () => {
   const { memoryData, setMemoryData } = useContext(AppContext);
   // grab string values from returned redisDB
