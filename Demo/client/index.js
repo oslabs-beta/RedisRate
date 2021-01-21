@@ -10,15 +10,15 @@
 
 // When the user clicks on the start button use recursion and setTimeOut
 // to send a post request to 'localhost:3000/data' at a random time interval
-const makeQueries = () => {
-  // Make post request using fetch
-  fetch('http:localhost:3000/data')
-  // call func again after a random interval of time
-  setTimeout(makeQueries(), (Math.random() * 1000))
+// const makeQueries = () => {
+//   // Make post request using fetch
+//   fetch('http:localhost:3000/data')
+//   // call func again after a random interval of time
+//   setTimeout(makeQueries(), (Math.random() * 1000))
 
-  // if the stop button is clicked, return out of func
+//   // if the stop button is clicked, return out of func
 
-};
+// };
 
 
 

@@ -19,6 +19,14 @@ app.post('/connect',
   }
 )
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`We be LISTENING: ${PORT}`)
 })

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Login from './Login.jsx';
+import Login from './Login';
 import ContextProvider from './context/ContextProvider';
 
 const mainElement = document.createElement('div');

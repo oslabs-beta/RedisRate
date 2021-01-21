@@ -10,7 +10,7 @@ const state = {
         lineTension: 2.5,
         backgroundColor: '#ffb8b8',
         borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
+        borderWidth: 3,
         data: [50, 100, 75, 20, 100, 55, 35]
       }
     ]

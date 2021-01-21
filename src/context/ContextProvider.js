@@ -3,10 +3,16 @@
   also saves information of context 
 */
 
-import React, { useState } from 'react';
-import AppContext from './index.js';
+import React, { Provider, useState } from 'react';
+import AppContext from './index.ts';
 
-const ContextProvider = ({ children }) => {
+// interface IProps {
+//   children: React.ReactNode; 
+// }
+
+
+const ContextProvider = ({ children, ...props } /*: IProps*/) => {
+
   const [port, setPort] = useState('');
   const [ipaddress, setIpaddress] = useState('');
   const [username, setUsername] = useState('');
@@ -24,8 +30,6 @@ const ContextProvider = ({ children }) => {
     setMemoryData,
     memoryData
   };
-// add more context for usedMemory and totalMemory then make the 
-// Memory subscibe to it.
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };

@@ -8,7 +8,10 @@ import {
   Link,
   useHistory,
 } from 'react-router-dom';
-import styles from './styles/styles.css';
+
+import './styles/styles.css';
+import TextField from '@material-ui/core/TextField';
+
 
 const Login = () => {
 
@@ -72,37 +75,16 @@ const Login = () => {
 
       <Route path='/'>
         <div id='loginPage'>
-          <div id="logo">Logo</div>
+          {/*<img src="/src/styles/assets/redisLogo.webp" width="200"></img>*/}
+          <div id="logo">Redis Rate</div>
           <div>
             <form id='form' onSubmit={onSubmit}>
-              <label>PORT</label>
-              <input
-                onChange={(e) => setPort(e.target.value)}
-                name='port'
-                defaultValue={port}
-              ></input>
-              <label>IP Address</label>
-              <input
-                onChange={(e) => setIpaddress(e.target.value)}
-                name='ipaddress'
-                value={ipaddress}
-              ></input>
-              <label>Username</label>
-              <input
-                onChange={(e) => setUsername(e.target.value)}
-                name='username'
-                value={username}
-              ></input>
-              <label>Password</label>
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                name='password'
-                value={password}
-                type='password'
-              ></input>
+              <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
+              <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
+              <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
+              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
               <input type='submit' value='Submit'></input>
             </form>
-            {/* <Test /> */}
           </div>
         </div>
       </Route>
