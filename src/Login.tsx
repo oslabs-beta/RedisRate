@@ -9,6 +9,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 
+import Button from '@material-ui/core/Button';
 import './styles/styles.css';
 import TextField from '@material-ui/core/TextField';
 
@@ -83,7 +84,8 @@ const Login = () => {
               <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
               <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
               <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-              <input type='submit' value='Submit'></input>
+              <Button type='submit' variant='outlined'>Submit</Button>
+              {/* <input type='submit' value='Submit'>Submit</input> */}
             </form>
           </div>
         </div>
