@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Graph from '../src/graph';
-import TheLine from '../src/line_graph';
-import ThePie from '../src/pie_donut';
 import Login from './Login.jsx';
 import ContextProvider from './context/ContextProvider';
 
@@ -22,7 +19,7 @@ const App = () => {
 ReactDom.render(
   <React.StrictMode>
     <ContextProvider>
-      <Router> 
+      <Router>
         <App />
       </Router>
     </ContextProvider>

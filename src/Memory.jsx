@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import ThePie from './pie_donut';
+import ThePie from './pie_donut.jsx';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 /*

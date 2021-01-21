@@ -15,7 +15,7 @@ app.post('/connect',
   controller.redisConnect,
   (req, res) => {
     console.log(res.locals);
-    res.status(200).json({ login: res.locals.login, metrics: res.locals.metrics});
+    res.status(200).json({ login: res.locals.login, allMemory: res.locals.allMemory, usedMemory: res.locals.usedMemory });
   }
 )
 

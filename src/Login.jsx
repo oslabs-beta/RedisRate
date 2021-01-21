@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import Memory from './Memory';
+import Memory from './Memory.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +11,7 @@ import {
 import styles from './styles/styles.css';
 
 const Login = () => {
-  
+
   let history = useHistory();
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
@@ -19,6 +19,7 @@ const Login = () => {
   const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
+  const { memoryData, setMemoryData} = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,22 +33,29 @@ const Login = () => {
       }),
       method: 'POST',
 
-      headers: {'Content-Type': 'Application/JSON'},
+      headers: { 'Content-Type': 'Application/JSON' },
     })
-    .then(response => response.json())
-    .then((response) => {
+      .then(response => response.json())
+      .then((response) => {
         // set isUserLoggedIn to true
-       
-      //  const { login} = response.body;
-      console.log('this be the body response' + JSON.stringify(response));
-      if(login === true) setIsUserLoggedIn(true);
-      if(login === false) console.log('Invalid Login');
-      console.log('Sent user data to server:', response);
-    })
 
-    .catch((err) => {
-      console.log('could not send user info:', err);
-    });
+        const { login, allMemory, usedMemory} = response;
+        setMemoryData({ 
+          all: allMemory,
+          used: usedMemory,
+        })
+        console.log('this be the memoryData:', memoryData)
+        console.log('this be the body response' + JSON.stringify(response));
+        if (login === true) {
+          setIsUserLoggedIn(true);
+
+        } 
+        if (login === false) console.log('Invalid Login');
+      })
+
+      .catch((err) => {
+        console.log('could not send user info:', err);
+      });
   };
 
   useEffect(() => {

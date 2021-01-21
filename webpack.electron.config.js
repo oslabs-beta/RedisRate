@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   devtool: 'source-map',
   entry: './electron/main.ts',
@@ -10,7 +10,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx)$/,
+        test: /\.(js|ts|tsx|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
