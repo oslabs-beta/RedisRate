@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import AppContext from './context/index';
+import './styles/styles.css';
 import ThePie from './pie_donut.jsx';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 
 /*
 1. graphics: show totalMemory, memoryUsage
@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const Memory = () => {
   return (
     <div>
+      <h1 id="MemoryPageTitle">Redis Memory Usage:</h1>
       <ThePie />
     </div>
   );
