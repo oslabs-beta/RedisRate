@@ -1,12 +1,22 @@
 #loginPage {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #logo {
   font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
 #form {
+  margin: 15px;
   display: flex;
   flex-direction: column;
+}
+
+
+#MemoryPageTitle {
+  font-family: Arial, Helvetica, sans-serif;
 }

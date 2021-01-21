@@ -32,7 +32,8 @@ module.exports = {
     hot: true,
     port: 3000,
     publicPath: '/',
-    proxy: {'*': {target: 'http://localhost:4000'}}
+    proxy: { '*': { target: 'http://localhost:4000' } },
+    historyApiFallback: true,
   },
   output: {
     path: path.resolve(__dirname, '../dist/renderer'),
