@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ThePie from './pie_donut';
 import './styles/styles.css';
+import ThePie from './pie_donut.jsx';
 
 
 /*

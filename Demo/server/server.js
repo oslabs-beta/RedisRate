@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-const PORT = 4000;
+// const PORT = 4000;
 const path = require('path');
 
 require('dotenv').config();
 
-const controller = require('./DbController.js');
+const PORT = 3000;
+const controller = require('./DbController.js')
+// const controller = require('./DbController.js');
 const redis = require('redis');
-const redisDb = redis.createClient();
+const redisDb = redis.createClient(); // may need to pass port in as a parameter
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());

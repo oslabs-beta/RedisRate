@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oslabs-beta/goRedis.git"
+    "url": "git+https://github.com/oslabs-beta/RedisRate.git"
   },
   "author": "Team Cache Me if You Can",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oslabs-beta/goRedis.git"
+    "url": "https://github.com/oslabs-beta/RedisRate.git"
   },
-  "homepage": "https://github.com/oslabs-beta/goRedis#readme",
+  "homepage": "https://github.com/oslabs-beta/RedisRate#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@types/react": "^17.0.0",

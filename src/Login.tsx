@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import Memory from './Memory';
+import Memory from './Memory.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,7 @@ const Login = () => {
   const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
+  const { memoryData, setMemoryData} = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +38,24 @@ const Login = () => {
 
       headers: { 'Content-Type': 'Application/JSON' },
     })
+      .then(response => response.json())
       .then((response) => {
         // set isUserLoggedIn to true
-        setIsUserLoggedIn(true);
-        console.log('Sent user data to server:', response);
+
+        const { login, allMemory, usedMemory} = response;
+        setMemoryData({ 
+          all: allMemory,
+          used: usedMemory,
+        })
+        console.log('this be the memoryData:', memoryData)
+        console.log('this be the body response' + JSON.stringify(response));
+        if (login === true) {
+          setIsUserLoggedIn(true);
+
+        } 
+        if (login === false) console.log('Invalid Login');
       })
+
       .catch((err) => {
         console.log('could not send user info:', err);
       });
