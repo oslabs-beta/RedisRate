@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
 import Memory from './Memory.jsx';
+import SignUp from './SignUp.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,40 +28,45 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setIsUserLoggedIn(true);
     // send values in POST
-    fetch('/connect', {
-      body: JSON.stringify({
-        port,
-        ipaddress,
-        username,
-        password,
-      }),
-      method: 'POST',
+    // fetch('/connect', {
+    //   body: JSON.stringify({
+    //     port,
+    //     ipaddress,
+    //     username,
+    //     password,
+    //   }),
+    //   method: 'POST',
 
-      headers: { 'Content-Type': 'Application/JSON' },
-    })
-      .then(response => response.json())
-      .then((response) => {
-        // set isUserLoggedIn to true
+    //   headers: { 'Content-Type': 'Application/JSON' },
+    // })
+    //   .then(response => response.json())
+    //   .then((response) => {
+    //     // set isUserLoggedIn to true
 
-        const { login, allMemory, usedMemory } = response;
-        setMemoryData({
-          all: allMemory,
-          used: usedMemory,
-        })
-        console.log('this be the memoryData:', memoryData)
-        console.log('this be the body response' + JSON.stringify(response));
-        if (login === true) {
-          setIsUserLoggedIn(true);
+    //     const { login, allMemory, usedMemory } = response;
+    //     setMemoryData({
+    //       all: allMemory,
+    //       used: usedMemory,
+    //     })
+    //     console.log('this be the memoryData:', memoryData)
+    //     console.log('this be the body response' + JSON.stringify(response));
+    //     if (login === true) {
+    //       setIsUserLoggedIn(true);
 
-        }
-        if (login === false) console.log('Invalid Login');
-      })
+    //     }
+    //     if (login === false) console.log('Invalid Login');
+    //   })
 
-      .catch((err) => {
-        console.log('could not send user info:', err);
-      });
+    //   .catch((err) => {
+    //     console.log('could not send user info:', err);
+    //   });
   };
+
+  function signUpNow() {
+    history.push('/signup');
+  }
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -74,22 +80,27 @@ const Login = () => {
         <Memory />
       </Route>
 
-      <Route path='/'>
+      <Route exact path='/'>
         <div id='loginPage'>
           <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
           {/* <div id="logo">Redis Rate</div> */}
           <div>
             <form id='form' onSubmit={onSubmit}>
-              <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
-              <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
+              {/* <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
+              <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} /> */}
               <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
               <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-              
-              <Button id='butt' variant='outlined' type='submit'>Submit</Button>
-
+              <Button id='butt' variant='outlined' type='submit'>Login</Button>
             </form>
+            <Button id='butt' variant='outlined' onClick={signUpNow}>Sign Up</Button>
           </div>
+          
         </div>
+      </Route>
+
+
+      <Route path='/signup'>
+        <SignUp />
       </Route>
     </Switch>
   );
