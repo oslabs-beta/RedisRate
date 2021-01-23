@@ -9,9 +9,9 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-import Button from '@material-ui/core/Button';
 import './styles/styles.css';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 const Login = () => {
@@ -23,7 +23,7 @@ const Login = () => {
   const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
-  const { memoryData, setMemoryData} = useContext(AppContext);
+  const { memoryData, setMemoryData } = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +43,8 @@ const Login = () => {
       .then((response) => {
         // set isUserLoggedIn to true
 
-        const { login, allMemory, usedMemory} = response;
-        setMemoryData({ 
+        const { login, allMemory, usedMemory } = response;
+        setMemoryData({
           all: allMemory,
           used: usedMemory,
         })
@@ -53,7 +53,7 @@ const Login = () => {
         if (login === true) {
           setIsUserLoggedIn(true);
 
-        } 
+        }
         if (login === false) console.log('Invalid Login');
       })
 
@@ -76,16 +76,15 @@ const Login = () => {
 
       <Route path='/'>
         <div id='loginPage'>
-          {/*<img src="/src/styles/assets/redisLogo.webp" width="200"></img>*/}
-          <div id="logo">Redis Rate</div>
+          <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
+          {/* <div id="logo">Redis Rate</div> */}
           <div>
             <form id='form' onSubmit={onSubmit}>
               <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
               <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
               <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
               <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-              <Button type='submit' variant='outlined'>Submit</Button>
-              {/* <input type='submit' value='Submit'>Submit</input> */}
+              <Button id='butt' variant='outlined' type='submit'>Submit</Button>
             </form>
           </div>
         </div>
