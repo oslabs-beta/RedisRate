@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './styles/styles.css';
 import ThePie from './pie_donut.jsx';
+import Navigation from './Navigation';
 
 
 /*
@@ -14,6 +15,7 @@ const Memory = () => {
     <div>
       <h1 id="MemoryPageTitle">Redis Memory Usage:</h1>
       <ThePie />
+      <Navigation />
     </div>
   );
 };
