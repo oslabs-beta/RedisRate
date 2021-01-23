@@ -20,7 +20,7 @@ var mainWindow; // what does this mean really
 function createWindow() {
   mainWindow = new electron__WEBPACK_IMPORTED_MODULE_0__.BrowserWindow({
     width: 800,
-    height: 600,
+    height: 700,
     // backgroundColor: "#45aaf2",
     webPreferences: {
       nodeIntegration: true

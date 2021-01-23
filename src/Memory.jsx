@@ -12,7 +12,7 @@ import Navigation from './Navigation';
 */
 const Memory = () => {
   return (
-    <div>
+    <div id='memoryPage'>
       <h1 id="MemoryPageTitle">Redis Memory Usage:</h1>
       <ThePie />
       <Navigation />

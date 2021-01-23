@@ -15,18 +15,28 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
 
   const [port, setPort] = useState('');
   const [ipaddress, setIpaddress] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [serverPassword, setServerPassword] = useState('');
   const [memoryData, setMemoryData] = useState({});
+  
   const context = {
     setPort,
     port,
     setIpaddress,
     ipaddress,
+    setFirstName,
+    firstName,
+    setLastName,
+    lastName,
     setUsername,
     username,
     setPassword,
     password,
+    setServerPassword,
+    serverPassword,
     setMemoryData,
     memoryData
   };
