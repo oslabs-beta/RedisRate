@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import Memory from './Memory.jsx';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useHistory,
+  useHistory
 } from 'react-router-dom';
 
 import './styles/styles.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Navigation from './Navigation.jsx';
 
 
 const Connect = () => {
 
   let history = useHistory();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isDbConnected, setIsDbConnected } = useContext(AppContext);
 
   const { port, setPort } = useContext(AppContext);
   const { ipaddress, setIpaddress } = useContext(AppContext);
@@ -49,7 +49,7 @@ const Connect = () => {
         console.log('this be the memoryData:', memoryData)
         console.log('this be the body response' + JSON.stringify(response));
         if (login === true) {
-          setIsUserLoggedIn(true);
+          setIsDbConnected(true);
 
         }
         if (login === false) console.log('Invalid Login');
@@ -61,31 +61,24 @@ const Connect = () => {
   };
 
   useEffect(() => {
-    if (isUserLoggedIn) {
-      history.push('/memory');
+    if (isDbConnected) {
+      history.push('/navigation');
     }
-  }, [isUserLoggedIn]);
+  }, [isDbConnected]);
 
   return (
-    <Switch>
-      <Route path='/memory'>
-        <Memory />
-      </Route>
 
-      <Route path='/connect'>
-        <div id='connectPage'>
-          {/* <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img> */}
-          <div>
-            <form id='form' onSubmit={onSubmit}>
-              <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
-              <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
-              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-              <Button id='butt' variant='outlined' type='submit'>Submit</Button>
-            </form>
-          </div>
-        </div>
-      </Route>
-    </Switch>
+    < div id='connectPage' >
+      {/* <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img> */}
+      < div >
+        <form id='form' onSubmit={onSubmit}>
+          <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
+          <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
+          <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
+          <Button id='butt' variant='outlined' type='submit'>Submit</Button>
+        </form>
+      </div >
+    </div >
   );
 };
 

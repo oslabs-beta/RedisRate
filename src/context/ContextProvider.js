@@ -21,6 +21,7 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
   const [password, setPassword] = useState('');
   const [serverPassword, setServerPassword] = useState('');
   const [memoryData, setMemoryData] = useState({});
+  const [isDbConnected, setIsDbConnected] = useState(false);
   
   const context = {
     setPort,
@@ -38,7 +39,9 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
     setServerPassword,
     serverPassword,
     setMemoryData,
-    memoryData
+    memoryData,
+    isDbConnected,
+    setIsDbConnected
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

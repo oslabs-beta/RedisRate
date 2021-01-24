@@ -31,7 +31,7 @@ const SignUp = () => {
 
   useEffect(() => {
       if(isUserLoggedIn) {
-          history.push('/memory'); //later, change this to general page
+          history.push('/navigation'); //later, change this to general page
       }
   }, [isUserLoggedIn]);
 

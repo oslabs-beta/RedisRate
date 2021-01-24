@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import Memory from './Memory.jsx';
 import SignUp from './SignUp.jsx';
+import Connect from './Connect.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,39 +29,6 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setIsUserLoggedIn(true);
-    // send values in POST
-    // fetch('/connect', {
-    //   body: JSON.stringify({
-    //     port,
-    //     ipaddress,
-    //     username,
-    //     password,
-    //   }),
-    //   method: 'POST',
-
-    //   headers: { 'Content-Type': 'Application/JSON' },
-    // })
-    //   .then(response => response.json())
-    //   .then((response) => {
-    //     // set isUserLoggedIn to true
-
-    //     const { login, allMemory, usedMemory } = response;
-    //     setMemoryData({
-    //       all: allMemory,
-    //       used: usedMemory,
-    //     })
-    //     console.log('this be the memoryData:', memoryData)
-    //     console.log('this be the body response' + JSON.stringify(response));
-    //     if (login === true) {
-    //       setIsUserLoggedIn(true);
-
-    //     }
-    //     if (login === false) console.log('Invalid Login');
-    //   })
-
-    //   .catch((err) => {
-    //     console.log('could not send user info:', err);
-    //   });
   };
 
   function signUpNow() {
@@ -70,14 +37,14 @@ const Login = () => {
 
   useEffect(() => {
     if (isUserLoggedIn) {
-      history.push('/memory');
+      history.push('/connect');
     }
   }, [isUserLoggedIn]);
 
   return (
     <Switch>
-      <Route path='/memory'>
-        <Memory />
+      <Route path='/connect'>
+        <Connect />
       </Route>
 
       <Route exact path='/'>
@@ -94,13 +61,7 @@ const Login = () => {
             </form>
             <Button id='butt' variant='outlined' onClick={signUpNow}>Sign Up</Button>
           </div>
-          
         </div>
-      </Route>
-
-
-      <Route path='/signup'>
-        <SignUp />
       </Route>
     </Switch>
   );

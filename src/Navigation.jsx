@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory, Switch, Route } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -11,16 +12,16 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
+import Memory from './Memory.jsx';
+import Test from './Test.jsx';
+
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme/*: Theme*/) =>
   createStyles({
     root: {
       display: 'flex',
@@ -80,6 +81,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Navigation() {
+
+  let userTest = 'test';
+
+  let history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -91,6 +96,11 @@ export default function Navigation() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleClick = () => {
+    console.log('click')
+    userTest = 'memory';
+  }
 
   return (
     <div className={classes.root}>
@@ -132,11 +142,21 @@ export default function Navigation() {
         </div>
         <Divider />
         <List>
-          {['Memory', 'Latency', 'Throughput', 'Stats'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem onClick={handleClick} button key='Memory'>
+            <ListItemText primary="Memory" />
+          </ListItem>
+          {/* <ListItem onClick={history.push('/')} button key='Log Out'>
+            <ListItemText primary="Log Out" />
+          </ListItem> */}
+          {/* <ListItem onClick={history.push('/latency')} button key='Latency'>
+            < ListItemText primary="Latency" />
+          </ListItem>
+          <ListItem onClick={history.push('/throughput')} button key='Throughput'>
+            <ListItemText primary="Throughput" />
+          </ListItem>
+          <ListItem onClick={history.push('/stats')} button key='Stats' >
+            <ListItemText primary="Stats" />
+          </ListItem> */}
         </List>
       </Drawer>
       <main
@@ -145,10 +165,22 @@ export default function Navigation() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>
-          GRAPH HERE 
-        </Typography>
+        {/* {
+          userTest ? 
+            <Memory />
+          :
+            <Test />
+        } */
+        {
+          test: <Test />,
+          memory: <Memory />,
+        }[userTest]
+        
+        
+        }
+
+
       </main>
-    </div>
+    </div >
   )
 }
