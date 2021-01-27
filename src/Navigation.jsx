@@ -165,21 +165,12 @@ export default function Navigation() {
         })}
       >
         <div className={classes.drawerHeader} />
-        {/* {
-          userTest ? 
-            <Memory />
-          :
-            <Test />
-        } */
         {
-          test: <Test />,
-          memory: <Memory />,
-        }[userTest]
-        
-        
+          {
+            test: <Test />,
+            memory: <Memory />,
+          }[userTest]
         }
-
-
       </main>
     </div >
   )
