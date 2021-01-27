@@ -7,7 +7,7 @@ const Test = () => {
 
   return (
     <div>
-      port is {port}
+      TEST HOME
     </div>
   )
 }
