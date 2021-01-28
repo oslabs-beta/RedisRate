@@ -85,8 +85,6 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
 
 export default function Navigation() {
 
-  let userTest = 'home';
-
   let history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
@@ -107,7 +105,6 @@ export default function Navigation() {
     console.log('click')
     setIsUserLoggedIn(false)
     history.push('/')
-    // userTest = 'memory';
   }
 
   return (
@@ -156,18 +153,10 @@ export default function Navigation() {
           <ListItem onClick={() => setPage('latency')} button key='Latency'>
             <ListItemText primary="Latency" />
           </ListItem>
+          <Divider />
           <ListItem onClick={logout} button key='Log Out'>
             <ListItemText primary="Log Out" />
           </ListItem>
-          {/* <ListItem onClick={history.push('/latency')} button key='Latency'>
-            < ListItemText primary="Latency" />
-          </ListItem>
-          <ListItem onClick={history.push('/throughput')} button key='Throughput'>
-            <ListItemText primary="Throughput" />
-          </ListItem>
-          <ListItem onClick={history.push('/stats')} button key='Stats' >
-            <ListItemText primary="Stats" />
-          </ListItem> */}
         </List>
       </Drawer>
       <main
