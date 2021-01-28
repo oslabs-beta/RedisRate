@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useHistory, Switch, Route } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
@@ -91,9 +91,10 @@ export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
-  const { page, setPage } = useContext(AppContext);
+  const [page, setPage] = useState('home');
+  const { isDbConnected, setIsDbConnected } = useContext(AppContext);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -106,9 +107,16 @@ export default function Navigation() {
   const logout = () => {
     console.log('click')
     setIsUserLoggedIn(false)
-    history.push('/')
+    setIsDbConnected(false);
+    // history.push('/')
     // userTest = 'memory';
   }
+
+  useEffect(() => {
+    if (!isUserLoggedIn) {
+      history.push('/');
+    }
+  }, [isUserLoggedIn]);
 
   return (
     <div className={classes.root}>
@@ -159,15 +167,12 @@ export default function Navigation() {
           <ListItem onClick={logout} button key='Log Out'>
             <ListItemText primary="Log Out" />
           </ListItem>
-          {/* <ListItem onClick={history.push('/latency')} button key='Latency'>
-            < ListItemText primary="Latency" />
-          </ListItem>
-          <ListItem onClick={history.push('/throughput')} button key='Throughput'>
+                 {/* <ListItem onClick={history.push('/throughput')} button key='Throughput'>
             <ListItemText primary="Throughput" />
           </ListItem>
           <ListItem onClick={history.push('/stats')} button key='Stats' >
             <ListItemText primary="Stats" />
-          </ListItem> */}
+          </ListItem> } */}
         </List>
       </Drawer>
       <main

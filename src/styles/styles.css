@@ -4,7 +4,7 @@ html {
   width: 100%;
   height: 100%;
   padding: 0;
-  background: linear-gradient(0deg, rgba(189,217,217,1) 0%, rgba(65,64,62,1) 69%);
+  /* background: linear-gradient(0deg, rgba(189,217,217,1) 0%, rgba(65,64,62,1) 69%); */
 }
 #loginPage {
   
