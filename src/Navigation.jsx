@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
 
 export default function Navigation() {
 
-  let userTest = 'test';
+  let userTest = 'memory';
 
   let history = useHistory();
   const classes = useStyles();
@@ -172,6 +172,6 @@ export default function Navigation() {
           }[userTest]
         }
       </main>
-    </div >
+    </div>
   )
 }
