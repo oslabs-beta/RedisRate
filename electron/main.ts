@@ -27,3 +27,7 @@ function createWindow() {
 
 app.on('ready', createWindow);
 app.allowRendererProcessReuse = true;
+
+// try {
+//   require('electron-reloader')(module)
+// } catch (_) {}

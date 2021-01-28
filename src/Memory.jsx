@@ -3,6 +3,7 @@ import './styles/styles.css';
 import ThePie from './pie_donut.jsx';
 
 
+
 /*
 1. graphics: show totalMemory, memoryUsage
   - get the metrics from backendd
@@ -14,6 +15,7 @@ const Memory = () => {
     <div id='memoryPage'>
       <h1 id="MemoryPageTitle">Redis Memory Usage:</h1>
       <ThePie />
+
     </div>
   );
 };
