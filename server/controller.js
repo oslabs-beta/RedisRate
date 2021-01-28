@@ -1,5 +1,5 @@
 const redis = require('redis');
-
+// Navi says hi!
 const controller = {};
 
 controller.redisConnect = (req, res, next) => {
