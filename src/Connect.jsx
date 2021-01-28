@@ -41,6 +41,9 @@ const Connect = () => {
       .then((response) => {
         // set isUserLoggedIn to true
 
+        //
+
+
         const { login, allMemory, usedMemory } = response;
         setMemoryData({
           all: allMemory,

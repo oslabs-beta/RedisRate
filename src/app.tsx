@@ -6,7 +6,7 @@ import SignUp from './SignUp.jsx';
 import Connect from './Connect.jsx';
 import Navigation from './Navigation.jsx';
 import ContextProvider from './context/ContextProvider';
-import Test from './test.jsx'
+// import Home from './Home.jsx'
 import Memory from './Memory.jsx'
 
 const mainElement = document.createElement('div');

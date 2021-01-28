@@ -8,8 +8,25 @@ const bodyParser = require('body-parser');
 const PORT = 4000;
 const path = require('path');
 const controller = require('./controller')
+const loginController = require('./loginController');
 
 app.use(bodyParser.json());
+
+// route for login
+app.post('/login',
+  loginController.validateUser,
+  (req, res) => {
+    res.status(200).json({ isUserLoggedIn: res.locals.isUserLoggedIn })
+  }
+)
+
+// route for signup
+app.post('/signup', 
+  loginController.addUser, 
+  (req, res) => {
+    res.status(200).json({ isUserLoggedIn : res.locals.isUserLoggedIn });
+  }
+)
 
 app.post('/connect',
   controller.redisConnect,
