@@ -29,7 +29,23 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setIsUserLoggedIn(true);
-  };
+    // fetch('/login', {
+    //   body: JSON.stringify({
+    //     username,
+    //     password,
+    //   }),
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'Application/JSON' },
+    // })
+    //   .then(response => response.json())
+    //   .then(res => {
+    //     // check status code of 200 ?
+    //     if (res === 'username password exists'){
+    //       setIsUserLoggedIn(true);
+    //     }
+    //   })
+    //   .catch(err => console.log('error username or password does not exist: ', err))
+    }
 
   function signUpNow() {
     history.push('/signup');

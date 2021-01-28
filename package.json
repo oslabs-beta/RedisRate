@@ -47,6 +47,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "electron": "^11.2.0",
+    "electron-reloader": "^1.2.0",
     "html-webpack-plugin": "^4.5.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.14.0",

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from "./context/index";
 
-const Test = () => {
+const Home = () => {
 
    const {port, setPort} = useContext(AppContext);
 
@@ -12,4 +12,4 @@ const Test = () => {
   )
 }
 
-export default Test;
+export default Home;

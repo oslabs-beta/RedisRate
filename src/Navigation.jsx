@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory, Switch, Route } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
@@ -16,7 +16,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Memory from './Memory.jsx';
-import Test from './Test.jsx';
+import Home from './Home.jsx';
+import Latency from './Latency.jsx'
+import Login from './Login.tsx';
+import AppContext from './context/index';
 
 
 const drawerWidth = 240;
@@ -82,12 +85,15 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
 
 export default function Navigation() {
 
-  let userTest = 'test';
+  let userTest = 'home';
 
   let history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+
+  const { page, setPage } = useContext(AppContext);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -97,9 +103,11 @@ export default function Navigation() {
     setOpen(false);
   };
 
-  const handleClick = () => {
+  const logout = () => {
     console.log('click')
-    userTest = 'memory';
+    setIsUserLoggedIn(false)
+    history.push('/')
+    // userTest = 'memory';
   }
 
   return (
@@ -142,12 +150,15 @@ export default function Navigation() {
         </div>
         <Divider />
         <List>
-          <ListItem onClick={handleClick} button key='Memory'>
+          <ListItem onClick={() => setPage('memory')} button key='Memory'>
             <ListItemText primary="Memory" />
           </ListItem>
-          {/* <ListItem onClick={history.push('/')} button key='Log Out'>
+          <ListItem onClick={() => setPage('latency')} button key='Latency'>
+            <ListItemText primary="Latency" />
+          </ListItem>
+          <ListItem onClick={logout} button key='Log Out'>
             <ListItemText primary="Log Out" />
-          </ListItem> */}
+          </ListItem>
           {/* <ListItem onClick={history.push('/latency')} button key='Latency'>
             < ListItemText primary="Latency" />
           </ListItem>
@@ -167,9 +178,10 @@ export default function Navigation() {
         <div className={classes.drawerHeader} />
         {
           {
-            test: <Test />,
+            home: <Home />,
             memory: <Memory />,
-          }[userTest]
+            latency: <Latency />
+          }[page]
         }
       </main>
     </div >
