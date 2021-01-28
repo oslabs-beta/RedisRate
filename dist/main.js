@@ -37,7 +37,9 @@ function createWindow() {
 }
 
 electron__WEBPACK_IMPORTED_MODULE_0__.app.on('ready', createWindow);
-electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true;
+electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true; // try {
+//   require('electron-reloader')(module)
+// } catch (_) {}
 
 /***/ }),
 

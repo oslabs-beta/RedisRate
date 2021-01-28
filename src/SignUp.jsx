@@ -26,12 +26,28 @@ const SignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setIsUserLoggedIn(true);
+    fetch('/signup', {
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        username,
+        password,
+      }),
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/JSON' },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (res === 'successfully created'){
+          setIsUserLoggedIn(true);
+        }
+      })
+      .catch(err => console.log('error creating user: ', err))
     }
 
   useEffect(() => {
       if(isUserLoggedIn) {
-          history.push('/navigation'); //later, change this to general page
+          history.push('/connect'); //later, change this to general page
       }
   }, [isUserLoggedIn]);
 
