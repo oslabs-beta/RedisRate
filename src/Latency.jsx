@@ -6,14 +6,10 @@ import AppContext from './context/index';
 
 const Latency = () => {
 
-   
-
   return (
     <div id='latencyPage'>
       <h1 id="LatencyPageTitle">Redis Latency:</h1>
-      we in latency
-      <Latency />
-
+      We in latency!
     </div>
   );
 };

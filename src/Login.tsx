@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 const Login = () => {
 
   let history = useHistory();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const { port, setPort } = useContext(AppContext);
   const { ipaddress, setIpaddress } = useContext(AppContext);
@@ -28,7 +28,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setIsUserLoggedIn(true);
+    // setIsUserLoggedIn(false);
     fetch('/login', {
       body: JSON.stringify({
         username,
@@ -40,9 +40,7 @@ const Login = () => {
       .then(response => response.json())
       .then(res => {
         // check status code of 200 ?
-        console.log(res);
-
-        if (res === 'username password exists'){
+        if (res["isUserLoggedIn"]){
           setIsUserLoggedIn(true);
         }
       })

@@ -37,12 +37,8 @@ const Connect = () => {
 
       headers: { 'Content-Type': 'Application/JSON' },
     })
-      .then(response => response.json())
+      .then(response => response.json()) 
       .then((response) => {
-        // set isUserLoggedIn to true
-
-        //
-
 
         const { login, allMemory, usedMemory } = response;
         setMemoryData({
@@ -53,9 +49,15 @@ const Connect = () => {
         console.log('this be the body response' + JSON.stringify(response));
         if (login === true) {
           setIsDbConnected(true);
+          console.log(`isDBLogged in for the true: ${isDbConnected}`);
 
         }
-        if (login === false) console.log('Invalid Login');
+        if (login === false) {
+          setIsDbConnected(false);
+          console.log(`isDBLogged in for the false: ${isDbConnected}`);
+
+          console.log('Invalid Login');
+        }
       })
 
       .catch((err) => {

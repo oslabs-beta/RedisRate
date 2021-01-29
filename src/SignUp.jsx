@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 const SignUp = () => {
 
   let history = useHistory();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const { firstName, setFirstname } = useContext(AppContext);
   const { lastName, setLastname } = useContext(AppContext);
