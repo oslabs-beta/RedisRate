@@ -21,22 +21,31 @@ app.post('/login',
 )
 
 // route for signup
-app.post('/signup', 
-  loginController.addUser, 
+app.post('/signup',
+  loginController.addUser,
   (req, res) => {
-    res.status(200).json({ isUserLoggedIn : res.locals.isUserLoggedIn });
+    res.status(200).json({ isUserLoggedIn: res.locals.isUserLoggedIn });
   }
 )
 
 app.post('/connect',
   controller.redisConnect,
   (req, res) => {
-    console.log(res.locals);
-    res.status(200).json({ login: res.locals.login, allMemory: res.locals.allMemory, usedMemory: res.locals.usedMemory });
+    res.status(200).json({
+      login: res.locals.login,
+      allMemory: res.locals.allMemory,
+      usedMemory: res.locals.usedMemory,
+      memoryFragRatio: res.locals.memoryFragmentation,
+      commandstats: res.locals.commandstats,
+      evictedKeys: res.locals.evictedKeys,
+      hitRate: res.locals.hitRate,
+      connectedClients: res.locals.connectedClients,
+      connectedSlaves: res.locals.connectedSlaves,
+    });
   }
 )
 
-app.get('/*', function(req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../index.html'), (err) => {
     if (err) {
       res.status(500).send(err)

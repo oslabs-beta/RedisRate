@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -104,8 +104,15 @@ export default function Navigation() {
   const logout = () => {
     console.log('click')
     setIsUserLoggedIn(false)
-    history.push('/')
   }
+
+  useEffect(() => {
+    if (isUserLoggedIn === false) {
+      history.push('/')
+    }
+  }, [isUserLoggedIn])
+
+
 
   return (
     <div className={classes.root}>

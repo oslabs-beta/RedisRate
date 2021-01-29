@@ -19,33 +19,31 @@ const Login = () => {
 
   let history = useHistory();
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
-  const { port, setPort } = useContext(AppContext);
-  const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
-  const { memoryData, setMemoryData } = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setIsUserLoggedIn(true);
-    // fetch('/login', {
-    //   body: JSON.stringify({
-    //     username,
-    //     password,
-    //   }),
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'Application/JSON' },
-    // })
-    //   .then(response => response.json())
-    //   .then(res => {
-    //     // check status code of 200 ?
-    //     if (res === 'username password exists'){
-    //       setIsUserLoggedIn(true);
-    //     }
-    //   })
-    //   .catch(err => console.log('error username or password does not exist: ', err))
-    }
+    // setIsUserLoggedIn(true);
+    fetch('/login', {
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/JSON' },
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res)
+        // check status code of 200 ?
+        if (res.isUserLoggedIn === true) {
+          setIsUserLoggedIn(true);
+        }
+        setIsUserLoggedIn(false)
+      })
+      .catch(err => console.log('error username or password does not exist: ', err))
+  }
 
   function signUpNow() {
     history.push('/signup');
