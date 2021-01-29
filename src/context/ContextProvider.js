@@ -3,13 +3,13 @@
   also saves information of context 
 */
 
+import { SentimentSatisfied } from '@material-ui/icons';
 import React, { Provider, useState } from 'react';
 import AppContext from './index.ts';
 
 // interface IProps {
 //   children: React.ReactNode; 
 // }
-
 
 const ContextProvider = ({ children, ...props } /*: IProps*/) => {
 
@@ -22,7 +22,8 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
   const [serverPassword, setServerPassword] = useState('');
   const [memoryData, setMemoryData] = useState({});
   const [isDbConnected, setIsDbConnected] = useState(false);
-  const [page, setPage] = useState('home')
+  const [isUserLoggedIn, setIsUserLoggedIn ] = useState(false);
+  const [page, setPage] = useState('home');
   
   const context = {
     setPort,
@@ -44,7 +45,9 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
     isDbConnected,
     setIsDbConnected,
     page,
-    setPage
+    setPage,
+    isUserLoggedIn,
+    setIsUserLoggedIn
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

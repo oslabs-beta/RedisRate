@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import SignUp from './SignUp.jsx';
 import Connect from './Connect.jsx';
 import {
   BrowserRouter as Router,
@@ -18,13 +17,16 @@ import Button from '@material-ui/core/Button';
 const Login = () => {
 
   let history = useHistory();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
+
+  const { port, setPort } = useContext(AppContext);
+  const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // setIsUserLoggedIn(true);
+    // setIsUserLoggedIn(false);
     fetch('/login', {
       body: JSON.stringify({
         username,
@@ -35,15 +37,13 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(res => {
-        console.log(res)
         // check status code of 200 ?
-        if (res.isUserLoggedIn === true) {
+        if (res["isUserLoggedIn"]){
           setIsUserLoggedIn(true);
         }
-        setIsUserLoggedIn(false)
       })
       .catch(err => console.log('error username or password does not exist: ', err))
-  }
+    }
 
   function signUpNow() {
     history.push('/signup');

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme, Theme, createStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -20,6 +20,7 @@ import Home from './Home.jsx';
 import Latency from './Latency.jsx'
 import Login from './Login.tsx';
 import AppContext from './context/index';
+import Throughput from './Throughput.jsx';
 
 
 const drawerWidth = 240;
@@ -28,6 +29,9 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
   createStyles({
     root: {
       display: 'flex',
+      // background: 'transparent',
+      // boxShadow: 'none',
+      // background: 'opacity 0%',
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -58,6 +62,7 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
     },
     drawerHeader: {
       display: 'flex',
+      backgroundColor: 'transparent',
       alignItems: 'center',
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
@@ -83,15 +88,22 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
   }),
 );
 
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "pink"
+  }
+})(Typography);
+
 export default function Navigation() {
 
   let history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
-  const { page, setPage } = useContext(AppContext);
+  const [page, setPage] = useState('home');
+  const { isDbConnected, setIsDbConnected } = useContext(AppContext);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -104,15 +116,16 @@ export default function Navigation() {
   const logout = () => {
     console.log('click')
     setIsUserLoggedIn(false)
+    setIsDbConnected(false);
+    // history.push('/')
+    // userTest = 'memory';
   }
 
   useEffect(() => {
-    if (isUserLoggedIn === false) {
-      history.push('/')
+    if (!isUserLoggedIn) {
+      history.push('/');
     }
-  }, [isUserLoggedIn])
-
-
+  }, [isUserLoggedIn]);
 
   return (
     <div className={classes.root}>
@@ -125,7 +138,7 @@ export default function Navigation() {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
+            // color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -133,9 +146,9 @@ export default function Navigation() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Navigation
-          </Typography>
+          <WhiteTextTypography variant="h6" noWrap>
+            Redis Rate
+          </WhiteTextTypography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -160,10 +173,15 @@ export default function Navigation() {
           <ListItem onClick={() => setPage('latency')} button key='Latency'>
             <ListItemText primary="Latency" />
           </ListItem>
-          <Divider />
+          <ListItem onClick={() => setPage('throughput')} button key='Throughput'>
+            <ListItemText primary="Throughput" />
+          </ListItem>
           <ListItem onClick={logout} button key='Log Out'>
             <ListItemText primary="Log Out" />
           </ListItem>
+          {/* <ListItem onClick={history.push('/stats')} button key='Stats' >
+            <ListItemText primary="Stats" />
+          </ListItem> } */}
         </List>
       </Drawer>
       <main
@@ -171,12 +189,13 @@ export default function Navigation() {
           [classes.contentShift]: open,
         })}
       >
-        <div className={classes.drawerHeader} />
+        <div className={classes.drawerHeader}  />
         {
           {
             home: <Home />,
             memory: <Memory />,
-            latency: <Latency />
+            latency: <Latency />,
+            throughput: <Throughput />
           }[page]
         }
       </main>

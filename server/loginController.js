@@ -12,7 +12,7 @@ loginController.validateUser = (req, res, next) => {
   // string for query
   const query = `SELECT pass FROM users WHERE users.user=$1`;
   // invoke db method to get user from db, pass in query
-  db.query(query, [username]) 
+  db.query(query, [username])
     // if theres not a match
     .then((result) => {
       console.log(result.rows[0].pass)
@@ -22,7 +22,7 @@ loginController.validateUser = (req, res, next) => {
         // if there's no match
         if (!response) {
           console.log('user unable to be validated:', err);
-          // send back false to prevent user from being redirected 
+          // send back false to prevent user from being redirected
           res.locals.isUserLoggedIn = false;
           return next();
         }
