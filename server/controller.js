@@ -50,15 +50,15 @@ controller.redisConnect = (req, res, next) => {
     // RedisDB.info(redis.print)
     // const getCmdStats = promisify(RedisDB.info).bind(RedisDB);
     // getCmdStats.then(console.log).catch(console.log)
+    
     let stats;
-    RedisDB.info('Commandstats', function (err, result) {
-      // MAYBE AUTH
-      if (err) console.log(err)
-      if (result) stats = result
+    RedisDB.info('commandstats', (err, result) => {
       
-      // res.locals.commandstats = stats;
+      console.log(result)
+      // res.json(result)
+
     })
-    res.locals.commandstats = stats;
+    
     
 
 
