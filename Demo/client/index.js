@@ -1,3 +1,4 @@
+
 /*
   This will be the page that controls the querying 
   functionality of our mock client. 
@@ -5,8 +6,6 @@
   in the redis databse that will be measured by the main
   electron app
 */
-
-
 
 // When the user clicks on the start button use recursion and setTimeOut
 // to send a post request to 'localhost:3000/data' at a random time interval

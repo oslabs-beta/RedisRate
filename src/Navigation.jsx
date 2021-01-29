@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -95,8 +95,6 @@ const WhiteTextTypography = withStyles({
 })(Typography);
 
 export default function Navigation() {
-
-  let userTest = 'home';
 
   let history = useHistory();
   const classes = useStyles();
@@ -201,6 +199,6 @@ export default function Navigation() {
           }[page]
         }
       </main>
-    </div >
+    </div>
   )
 }

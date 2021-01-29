@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import SignUp from './SignUp.jsx';
 import Connect from './Connect.jsx';
 import {
   BrowserRouter as Router,
@@ -24,7 +23,6 @@ const Login = () => {
   const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
-  const { memoryData, setMemoryData } = useContext(AppContext);
 
   const onSubmit = (e) => {
     e.preventDefault();

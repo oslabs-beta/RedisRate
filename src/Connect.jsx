@@ -18,7 +18,6 @@ const Connect = () => {
 
   let history = useHistory();
   const { isDbConnected, setIsDbConnected } = useContext(AppContext);
-
   const { port, setPort } = useContext(AppContext);
   const { ipaddress, setIpaddress } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);

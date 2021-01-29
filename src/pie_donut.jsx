@@ -18,7 +18,7 @@ const ThePie = () => {
   usedMemory = parseInt(usedMemory, 10);
 
   if (tth === 'G') {
-    usedMemory = usedMemory / 1000000;
+    usedMemory = usedMemory / 1000;
   }
 
   // grab the metrics from AppContext, these will have already been sent from backend
@@ -32,7 +32,7 @@ const ThePie = () => {
         hoverBackgroundColor: ['#501800', '#ffu8b8'],
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
-        data: [totalMemory, 1.71],
+        data: [totalMemory, usedMemory],
       },
     ],
   };

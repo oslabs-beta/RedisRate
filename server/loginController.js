@@ -1,22 +1,14 @@
 const db = require('./LoginModel.js');
 const theCrypt = require('bcrypt');
 
-// bcrypt.hash, makes hash and compare funcs, compares pass
-// to hash 
-
-// table should consit of fName, lName, user, pass, also need to add PK to link to FK
-// for new table of metrics, will come back to.
-
-// BCRYPT
-
 // piece of middleware
 const loginController = {}
-
 
 // method, first check if login is valid, get user and check
 loginController.validateUser = (req, res, next) => {
   // accept from body user, pass, deconstruct
   const { username, password } = req.body;  
+  console.log(password)
   // string for query
   const query = `SELECT pass FROM users WHERE users.user=$1`;
   // invoke db method to get user from db, pass in query
@@ -44,7 +36,6 @@ loginController.validateUser = (req, res, next) => {
     .catch((err) => {
       console.log('User could not be validated:', err)
     })
-
 }
 
 // sign up method, add user and login
@@ -73,22 +64,6 @@ loginController.addUser = (req, res, next) => {
       return next();
     })
   });
-
- 
-
-  // invoke db method to put into database
-    // db.query(query, [firstName, lastName, username, password], (err, response) => {
-    //     if(err) {
-    //       console.log('Error adding user to db, ' + err);
-    //       res.locals.isUserLoggedIn = false;
-    //       return next();
-    //     } else {
-    //         console.log('User Added!');
-    //         res.locals.isUserLoggedIn = true;
-    //         return next();
-    //     }
-
-    // })
 }
 
 module.exports = loginController;

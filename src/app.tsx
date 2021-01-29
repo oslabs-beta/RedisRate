@@ -29,9 +29,6 @@ const App = () => {
         <Route exact path='/navigation'>
           <Navigation />
         </Route>
-        <Route exact path='/memory'>
-          <Memory />
-        </Route>
       </Switch>
     </div >
   );
