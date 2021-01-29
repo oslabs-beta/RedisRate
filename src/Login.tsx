@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 const Login = () => {
 
   let history = useHistory();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const { port, setPort } = useContext(AppContext);
   const { ipaddress, setIpaddress } = useContext(AppContext);
@@ -28,23 +28,23 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setIsUserLoggedIn(true);
-    // fetch('/login', {
-    //   body: JSON.stringify({
-    //     username,
-    //     password,
-    //   }),
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'Application/JSON' },
-    // })
-    //   .then(response => response.json())
-    //   .then(res => {
-    //     // check status code of 200 ?
-    //     if (res === 'username password exists'){
-    //       setIsUserLoggedIn(true);
-    //     }
-    //   })
-    //   .catch(err => console.log('error username or password does not exist: ', err))
+    // setIsUserLoggedIn(false);
+    fetch('/login', {
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/JSON' },
+    })
+      .then(response => response.json())
+      .then(res => {
+        // check status code of 200 ?
+        if (res["isUserLoggedIn"]){
+          setIsUserLoggedIn(true);
+        }
+      })
+      .catch(err => console.log('error username or password does not exist: ', err))
     }
 
   function signUpNow() {

@@ -5,8 +5,6 @@ html {
   height: 100%;
   padding: 0;
   background: linear-gradient(0deg, rgba(189,217,217,1) 0%, rgba(65,64,62,1) 69%);
-}
-#loginPage {
   
   display: block;
   margin: auto;
@@ -14,6 +12,8 @@ html {
   max-width: 300px;
   align-items: center;
 }
+/* #loginPage {
+} */
 
 img {
   display: flex;

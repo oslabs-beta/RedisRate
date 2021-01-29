@@ -6,7 +6,7 @@ import ThePie from './pie_donut.jsx';
 
 /*
 1. graphics: show totalMemory, memoryUsage
-  - get the metrics from backend
+  - get the metrics from backendd
     - by getting context
     = Prop drilling? from Login OR use ContextProvider.js for managing state
 */
