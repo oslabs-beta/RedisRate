@@ -1,17 +1,12 @@
 /*
-  Create initial state for context provider,
-  also saves information of context 
+  React Context API used for state management
+  Context object here hold state variables and methods
 */
 
-import { SentimentSatisfied } from '@material-ui/icons';
 import React, { Provider, useState } from 'react';
 import AppContext from './index.ts';
 
-// interface IProps {
-//   children: React.ReactNode; 
-// }
-
-const ContextProvider = ({ children, ...props } /*: IProps*/) => {
+const ContextProvider = ({ children }) => {
 
   const [port, setPort] = useState('');
   const [ipaddress, setIpaddress] = useState('');
@@ -21,9 +16,11 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
   const [password, setPassword] = useState('');
   const [serverPassword, setServerPassword] = useState('');
   const [memoryData, setMemoryData] = useState({});
+  const [throughputData, setThroughputData] = useState({});
+  const [latencyData, setLatencyData] = useState({});
   const [isDbConnected, setIsDbConnected] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn ] = useState(false);
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('Home');
   
   const context = {
     setPort,
@@ -42,12 +39,16 @@ const ContextProvider = ({ children, ...props } /*: IProps*/) => {
     serverPassword,
     setMemoryData,
     memoryData,
-    isDbConnected,
+    setThroughputData,
+    throughputData,
+    setLatencyData,
+    latencyData,
     setIsDbConnected,
-    page,
+    isDbConnected,
     setPage,
+    page,
+    setIsUserLoggedIn,
     isUserLoggedIn,
-    setIsUserLoggedIn
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

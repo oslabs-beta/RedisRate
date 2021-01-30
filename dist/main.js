@@ -15,13 +15,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var mainWindow; // what does this mean really
+var mainWindow;
 
 function createWindow() {
   mainWindow = new electron__WEBPACK_IMPORTED_MODULE_0__.BrowserWindow({
     width: 800,
     height: 700,
-    // backgroundColor: "#45aaf2",
+    backgroundColor: "#45aaf2",
     webPreferences: {
       nodeIntegration: true
     }
@@ -37,9 +37,7 @@ function createWindow() {
 }
 
 electron__WEBPACK_IMPORTED_MODULE_0__.app.on('ready', createWindow);
-electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true; // try {
-//   require('electron-reloader')(module)
-// } catch (_) {}
+electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true;
 
 /***/ }),
 

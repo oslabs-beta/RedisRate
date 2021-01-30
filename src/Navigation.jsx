@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import AppContext from './context/index';
+
+// material UI imports for navbar
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,25 +16,24 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Memory from './Memory.jsx';
+
+// components
+import Memory from './Metrics/Memory.jsx';
 import Home from './Home.jsx';
-import Latency from './Latency.jsx'
-import Login from './Login.tsx';
-import AppContext from './context/index';
-import Throughput from './Throughput.jsx';
+import Latency from './Metrics/Latency.jsx'
+import Throughput from './Metrics/Throughput.jsx';
 
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme/*: Theme*/) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',
-      // background: 'transparent',
-      // boxShadow: 'none',
-      // background: 'opacity 0%',
+      background: 'transparent',
+      boxShadow: 'none',
+      background: 'opacity 0%',
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -90,7 +92,7 @@ const useStyles = makeStyles((theme/*: Theme*/) =>
 
 const WhiteTextTypography = withStyles({
   root: {
-    color: "pink"
+    color: "white"
   }
 })(Typography);
 
@@ -101,8 +103,8 @@ export default function Navigation() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const [page, setPage] = useState('home');
-  const { isDbConnected, setIsDbConnected } = useContext(AppContext);
+  const [page, setPage] = useState('Home');
+  const { setIsDbConnected } = useContext(AppContext);
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
   const handleDrawerOpen = () => {
@@ -114,11 +116,8 @@ export default function Navigation() {
   };
 
   const logout = () => {
-    console.log('click')
     setIsUserLoggedIn(false)
     setIsDbConnected(false);
-    // history.push('/')
-    // userTest = 'memory';
   }
 
   useEffect(() => {
@@ -138,7 +137,7 @@ export default function Navigation() {
       >
         <Toolbar>
           <IconButton
-            // color="inherit"
+            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -147,7 +146,7 @@ export default function Navigation() {
             <MenuIcon />
           </IconButton>
           <WhiteTextTypography variant="h6" noWrap>
-            Redis Rate
+            {page}
           </WhiteTextTypography>
         </Toolbar>
       </AppBar>
@@ -167,21 +166,18 @@ export default function Navigation() {
         </div>
         <Divider />
         <List>
-          <ListItem onClick={() => setPage('memory')} button key='Memory'>
+          <ListItem onClick={() => setPage('Memory')} button key='Memory'>
             <ListItemText primary="Memory" />
           </ListItem>
-          <ListItem onClick={() => setPage('latency')} button key='Latency'>
+          <ListItem onClick={() => setPage('Latency')} button key='Latency'>
             <ListItemText primary="Latency" />
           </ListItem>
-          <ListItem onClick={() => setPage('throughput')} button key='Throughput'>
+          <ListItem onClick={() => setPage('Throughput')} button key='Throughput'>
             <ListItemText primary="Throughput" />
           </ListItem>
           <ListItem onClick={logout} button key='Log Out'>
             <ListItemText primary="Log Out" />
           </ListItem>
-          {/* <ListItem onClick={history.push('/stats')} button key='Stats' >
-            <ListItemText primary="Stats" />
-          </ListItem> } */}
         </List>
       </Drawer>
       <main
@@ -192,10 +188,10 @@ export default function Navigation() {
         <div className={classes.drawerHeader}  />
         {
           {
-            home: <Home />,
-            memory: <Memory />,
-            latency: <Latency />,
-            throughput: <Throughput />
+            Home: <Home />,
+            Memory: <Memory />,
+            Latency: <Latency />,
+            Throughput: <Throughput />
           }[page]
         }
       </main>
