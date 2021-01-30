@@ -8,6 +8,15 @@ import Navigation from './Navigation.jsx';
 import ContextProvider from './context/ContextProvider';
 // import Home from './Home.jsx'
 import Memory from './Metrics/Memory.jsx'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+const theme = createMuiTheme ({
+  palette: {
+    primary : { 500: '#743854'},
+    background : { default : 'linear-gradient(to right, tomato, cyan)'}
+},
+})
 
 const mainElement = document.createElement('div');
 document.body.appendChild(mainElement);
@@ -35,12 +44,15 @@ const App = () => {
 };
 
 ReactDom.render(
-  <React.StrictMode>
-    <ContextProvider>
-      <Router>
-        <App />
-      </Router>
-    </ContextProvider>
-  </React.StrictMode>,
-  mainElement
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+        <React.StrictMode>
+          <ContextProvider>
+            <Router>
+              <App />
+            </Router>
+          </ContextProvider>
+        </React.StrictMode>
+    </ThemeProvider>,
+          mainElement
 );
