@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from './context/index';
-import Memory from './Memory.jsx';
+import Memory from './Metrics/Memory.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -56,8 +56,8 @@ const SignUp = () => {
         <Route path='/signup'>
           <div id='signup'>
           <form id='signupForm' onSubmit={onSubmit}>
-            <TextField className='formElement' margin='normal' label='firstName' onChange={(e) => setFirstname(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='lastName' onChange={(e) => setLastname(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='First Name' onChange={(e) => setFirstname(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='Last Name' onChange={(e) => setLastname(e.target.value)} />
             <TextField className='formElement' margin='normal' label='Username' onChange={(e) => setUsername(e.target.value)} />
             <TextField className='formElement' margin='normal' label='Password' onChange={(e) => setPassword(e.target.value)} />
             <Button id='signupButt' type='submit' variant='outlined'>Signup</Button>

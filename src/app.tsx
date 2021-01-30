@@ -7,7 +7,7 @@ import Connect from './Connect.jsx';
 import Navigation from './Navigation.jsx';
 import ContextProvider from './context/ContextProvider';
 // import Home from './Home.jsx'
-import Memory from './Memory.jsx'
+import Memory from './Metrics/Memory.jsx'
 
 const mainElement = document.createElement('div');
 document.body.appendChild(mainElement);
