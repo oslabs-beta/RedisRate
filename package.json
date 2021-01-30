@@ -7,7 +7,8 @@
     "start": "nodemon ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:electron": "NODE_ENV=development nodemon ./server/server.js & webpack serve --config webpack.react.config.js --mode development & webpack --config webpack.electron.config.js --mode development && electron .",
-    "dev:react": "NODE_ENV=development webpack serve --config webpack.react.config.js --mode development"
+    "dev:react": "NODE_ENV=development webpack serve --config webpack.react.config.js --mode development",
+    "cy:run": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "@types/react-router-dom": "^5.1.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
+    "cypress": "^6.3.0",
     "electron": "^11.2.0",
     "electron-reloader": "^1.2.0",
     "html-webpack-plugin": "^4.5.1",
