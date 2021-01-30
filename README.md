@@ -11,8 +11,11 @@ RedisRate is in BETA phase. Pull requests are welcome. Make changes as you pleas
 ## Getting Started 🏁
 
 1. Clone this repository.
-2. Run npm install.
-3. To run application in development, run npm run dev:electron.
+2. Run `npm install`
+3. To run application in development,
+   `run npm run dev:electron`
+
+- //! put URI, tell them to connect sql for themselves
 
 ## ✨ Usage
 
@@ -20,15 +23,29 @@ RedisRate is in BETA phase. Pull requests are welcome. Make changes as you pleas
 
 Sign in by entering your username and password. If this is your first time using the application, create an account by clicking sign up.
 
-Once logged in, make sure your Redis server is running and connect your database by entering the IP address, port number, and password. Upon a successful connection, it will redirect you to the homepage. Use the navigation menu to view specific metrics of your Redis instance.
+<!-- add a picture of sign up -->
+
+Once logged in, make sure your Redis server is running and connect your Redis database by entering the IP address, port number, and auth password. If you do not require a password for your Redis Server, simply leave the password input field blank, the app can connect without it. Upon a successful connection, it will redirect you to the homepage. Use the navigation menu to view specific metrics of your Redis instance.
+
+<!-- add picture of port page -->
 
 Memory
 
+<!-- add picture of port page -->
+
 Latency
+
+<!-- add picture of port page -->
 
 Throughput
 
-## Developers
+<!-- add picture of port page -->
+
+## Developers<p align='center'>
+
+<p>
+<img src='./src/styles/assets/git.png' height=25px/>
+<img src='./src/styles/assets/linkedin.png' height=25px/></p>
 
 [Matthew Marchand](https://github.com/m-marchand)
 

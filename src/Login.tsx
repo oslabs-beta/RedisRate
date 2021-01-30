@@ -66,8 +66,8 @@ const Login = () => {
               <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
               <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
               <Button id='button' variant='outlined' type='submit'>Login</Button>
+              <Button id='button' variant='outlined' onClick={signUpNow}>Sign Up</Button>
             </form>
-            <Button id='button' variant='outlined' onClick={signUpNow}>Sign Up</Button>
           </div>
         </div>
       </Route>
