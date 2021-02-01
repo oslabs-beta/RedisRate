@@ -37,7 +37,7 @@ const Login = () => {
         // check status code of 200 ?
         if (res["isUserLoggedIn"]){
           setIsUserLoggedIn(true);
-        }
+        } else alert("Username/Password are incorrect. Please try again, or Sign up Now!");
       })
       .catch(err => console.log('error username or password does not exist: ', err))
     }
@@ -62,9 +62,9 @@ const Login = () => {
         <div id='loginPage'>
           <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
           <div>
-            <form id='form' onSubmit={onSubmit}>
-              <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
-              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
+            <form id='loginform' onSubmit={onSubmit}>
+              <TextField className="formElement" margin="normal" label="Username" variant="outlined" required onChange={(e) => setUsername(e.target.value)} />
+              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" required onChange={(e) => setPassword(e.target.value)} />
               <Button id='button' variant='outlined' type='submit'>Login</Button>
               <Button id='button' variant='outlined' onClick={signUpNow}>Sign Up</Button>
             </form>

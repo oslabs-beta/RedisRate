@@ -8,6 +8,28 @@ import Navigation from './Navigation.jsx';
 import ContextProvider from './context/ContextProvider';
 // import Home from './Home.jsx'
 import Memory from './Metrics/Memory.jsx'
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { colors } from '@material-ui/core';
+// import palette from './palette';
+// const useStyles = makeStyles(theme => ({
+//   root : { backgroundColor : "pink",
+// }
+// }));
+
+// const classes = useStyles();
+
+const theme = createMuiTheme ({
+  palette: {
+    primary : { main: '#57CBCC', contrastText: '#fff'},
+    secondary: { main: '#c44569' },
+    background : { paper : '#596275', default : '#303952'},
+    text : { primary : '#FFFFFF'},
+  }
+});
+
+// const theBack = { background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' };
+
 
 const mainElement = document.createElement('div');
 document.body.appendChild(mainElement);
@@ -15,7 +37,7 @@ document.title = 'Redis Rate';
 
 const App = () => {
   return (
-    <div>
+    <div >
       <Switch>
         <Route exact path='/'>
           <Login />
@@ -35,12 +57,15 @@ const App = () => {
 };
 
 ReactDom.render(
-  <React.StrictMode>
-    <ContextProvider>
-      <Router>
-        <App />
-      </Router>
-    </ContextProvider>
-  </React.StrictMode>,
-  mainElement
+    <ThemeProvider theme={theme} >
+      <CssBaseline />
+        <React.StrictMode>
+          <ContextProvider>
+            <Router>
+              <App />
+            </Router>
+          </ContextProvider>
+        </React.StrictMode>
+    </ThemeProvider>,
+          mainElement
 );

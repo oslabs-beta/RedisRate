@@ -56,10 +56,10 @@ const SignUp = () => {
         <Route path='/signup'>
           <div id='signup'>
           <form id='signupForm' onSubmit={onSubmit}>
-            <TextField className='formElement' margin='normal' label='First Name' onChange={(e) => setFirstname(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Last Name' onChange={(e) => setLastname(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Username' onChange={(e) => setUsername(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Password' onChange={(e) => setPassword(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='First Name' required onChange={(e) => setFirstname(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='Last Name' required onChange={(e) => setLastname(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='Username' required onChange={(e) => setUsername(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='Password' required onChange={(e) => setPassword(e.target.value)} />
             <Button id='signupButt' type='submit' variant='outlined'>Signup</Button>
           </form>
           </div>
