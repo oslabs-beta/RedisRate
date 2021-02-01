@@ -18,11 +18,9 @@ const Memory = () => {
   usedMemory.replace(uth, '');
   totalMemory = parseInt(totalMemory, 10);
   usedMemory = parseInt(usedMemory, 10);
-
   if (uth === 'M') {
     usedMemory = usedMemory / 1000;
   }
-
   if (uth === 'K') {
     usedMemory = usedMemory / 1000000
   }
@@ -40,44 +38,13 @@ const Memory = () => {
     ]
   }
 
-  const fragData = {
-    labels: ['Memory Fragmentation Ratio'],
-    datasets: [
-      {
-        label: 'Memory Fragmentation Ratio',
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-        borderColor: 'rgba(0,0,0)',
-        borderWidth: 2,
-        data: [memoryData.fragRatio]
-      }
-    ]
-  }
-
   return ( 
     <div>
       <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3>
-      <div id='memoryGraphs'>
-        <div>
-          <Pie data={pieData}/>
-        </div>
-        <div id='memoryBar'>
-          <Bar
-            data={fragData}
-            options={{
-              scales: {
-                yAxes: [
-                  {
-                    ticks: {
-                      min: 0,
-                      beginAtZero: true,
-                    },
-                  },
-                ],
-              },
-            }}
-          />
-        </div>
+      <div>
+        <Pie data={pieData}/>
       </div>
+      <h3>Memory fragmentation ratio: {memoryData.fragRatio}</h3>
       <h3>Evicted Keys: {memoryData.evictedKeys}</h3>
     </div>
   );
