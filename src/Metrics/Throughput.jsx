@@ -6,11 +6,11 @@ import '../styles/styles.css';
 const Throughput = () => {
 
   const { 
-    throughputData
+    throughputData,
   } = useContext(AppContext);
 
   const state = {
-    labels: ['Connected Clients', 'Connected Replicas', 'Blocked Clients'],
+    labels: ['Throughput'],
     datasets: [
       {
         label: 'Connected Clients',
@@ -27,7 +27,7 @@ const Throughput = () => {
         data: [throughputData.connectedSlaves]
       },
       {
-        label: 'Bloked Clients',
+        label: 'Blocked Clients',
         backgroundColor: '#ffb8b8',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,

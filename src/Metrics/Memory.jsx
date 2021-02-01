@@ -19,23 +19,29 @@ const Memory = () => {
   totalMemory = parseInt(totalMemory, 10);
   usedMemory = parseInt(usedMemory, 10);
 
-  if (tth === 'M') {
-    usedMemory = usedMemory / 10000;
+  if (uth === 'M') {
+    totalMemory = totalMemory / 1000;
   }
 
   const state = {
-    labels: ['Total Memory', 'Used Memory'],
+    labels: ['Memory'],
     datasets: [
       {
-        label: 'Cache Me If You Can',
-        backgroundColor: '#ffb8b8',
+        label: 'Used',
+        backgroundColor: '#bda00d',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
-        data: [totalMemory, usedMemory]
+        data: [usedMemory]
+      },
+      {
+        label: 'Total',
+        backgroundColor: '#EDC911',
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 2,
+        data: [totalMemory]
       }
     ]
   }
-  
 
   return ( 
     <div>
@@ -52,7 +58,16 @@ const Memory = () => {
           legend:{
             display:true,
             position:'bottom'
-          }
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
         }}
       />
     </div>
