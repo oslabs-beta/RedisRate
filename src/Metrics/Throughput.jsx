@@ -6,30 +6,29 @@ import '../styles/styles.css';
 const Throughput = () => {
 
   const { 
-    throughputData
+    throughputData,
   } = useContext(AppContext);
 
   const state = {
-    labels: ['Connected Clients', 'Connected Replicas', 'Blocked Clients'],
     datasets: [
       {
         label: 'Connected Clients',
-        backgroundColor: '#ffb8b8',
-        borderColor: 'rgba(0,0,0,1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.connectedClients]
       },
       {
         label: 'Connected Replicas',
-        backgroundColor: '#ffb8b8',
-        borderColor: 'rgba(0,0,0,1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.connectedSlaves]
       },
       {
-        label: 'Bloked Clients',
-        backgroundColor: '#ffb8b8',
-        borderColor: 'rgba(0,0,0,1)',
+        label: 'Blocked Clients',
+        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.blockedClients]
       }
@@ -42,11 +41,6 @@ const Throughput = () => {
       <Bar
         data={state}
         options={{
-          title:{
-            display:true,
-            text:'Database Connections',
-            fontSize:30
-          },
           legend:{
             display:true,
             position:'bottom'

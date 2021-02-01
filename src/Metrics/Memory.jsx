@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/index';
-import { Bar } from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
 import '../styles/styles.css';
 
 const Memory = () => {
@@ -18,46 +18,36 @@ const Memory = () => {
   usedMemory.replace(uth, '');
   totalMemory = parseInt(totalMemory, 10);
   usedMemory = parseInt(usedMemory, 10);
-
-  if (tth === 'M') {
-    usedMemory = usedMemory / 10000;
+  if (uth === 'M') {
+    usedMemory = usedMemory / 1000;
+  }
+  if (uth === 'K') {
+    usedMemory = usedMemory / 1000000
   }
 
-  const state = {
-    labels: ['Total Memory', 'Used Memory'],
+  const pieData = {
+    labels: ['Used Memory', 'Total Memory'],
     datasets: [
       {
-        label: 'Cache Me If You Can',
-        backgroundColor: '#ffb8b8',
-        borderColor: 'rgba(0,0,0,1)',
+        label: 'Used',
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
-        data: [totalMemory, usedMemory]
-      }
+        data: [usedMemory, totalMemory]
+      },
     ]
   }
-  
 
   return ( 
     <div>
-      <h3>Memory Fragmentation Ratio: {memoryData.fragRatio}</h3>
+      <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3>
+      <div>
+        <Pie data={pieData}/>
+      </div>
+      <h3>Memory fragmentation ratio: {memoryData.fragRatio}</h3>
       <h3>Evicted Keys: {memoryData.evictedKeys}</h3>
-      <Bar
-        data={state}
-        options={{
-          title:{
-            display:true,
-            text:'Memory Usage',
-            fontSize:30
-          },
-          legend:{
-            display:true,
-            position:'bottom'
-          }
-        }}
-      />
     </div>
   );
-
 };
 
 export default Memory;

@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import AppContext from './context/index';
 import Memory from './Metrics/Memory.jsx';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   useHistory,
 } from 'react-router-dom';
 
@@ -55,11 +53,12 @@ const SignUp = () => {
       <Switch>
         <Route path='/signup'>
           <div id='signup'>
+          <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
           <form id='signupForm' onSubmit={onSubmit}>
             <TextField className='formElement' margin='normal' label='First Name' onChange={(e) => setFirstname(e.target.value)} />
             <TextField className='formElement' margin='normal' label='Last Name' onChange={(e) => setLastname(e.target.value)} />
             <TextField className='formElement' margin='normal' label='Username' onChange={(e) => setUsername(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Password' onChange={(e) => setPassword(e.target.value)} />
+            <TextField className='formElement' margin='normal' type='password' label='Password' onChange={(e) => setPassword(e.target.value)} />
             <Button id='signupButt' type='submit' variant='outlined'>Signup</Button>
           </form>
           </div>
