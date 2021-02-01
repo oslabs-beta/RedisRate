@@ -17,8 +17,8 @@ const SignUp = () => {
   let history = useHistory();
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
 
-  const { firstName, setFirstname } = useContext(AppContext);
-  const { lastName, setLastname } = useContext(AppContext);
+  const { firstName, setFirstName } = useContext(AppContext);
+  const { lastName, setLastName } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
 
@@ -36,7 +36,7 @@ const SignUp = () => {
     })
       .then(response => response.json())
       .then(res => {
-        if (res === 'successfully created'){
+        if (res.isUserLoggedIn === true){
           setIsUserLoggedIn(true);
         }
       })
@@ -49,16 +49,17 @@ const SignUp = () => {
       }
   }, [isUserLoggedIn]);
 
+  
   return (
       <Switch>
         <Route path='/signup'>
           <div id='signup'>
           <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
           <form id='signupForm' onSubmit={onSubmit}>
-            <TextField className='formElement' margin='normal' label='First Name' onChange={(e) => setFirstname(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Last Name' onChange={(e) => setLastname(e.target.value)} />
-            <TextField className='formElement' margin='normal' label='Username' onChange={(e) => setUsername(e.target.value)} />
-            <TextField className='formElement' margin='normal' type='password' label='Password' onChange={(e) => setPassword(e.target.value)} />
+            <TextField className='formElement' margin='normal' label='First Name'  onChange={(e) => setFirstName(e.target.value)} required/>
+            <TextField className='formElement' margin='normal' label='Last Name'  onChange={(e) => setLastName(e.target.value)} required/>
+            <TextField className='formElement' margin='normal' label='Username'  onChange={(e) => setUsername(e.target.value)} required/>
+            <TextField className='formElement' margin='normal' label='Password' type='password'  onChange={(e) => setPassword(e.target.value)} required/>
             <Button id='signupButt' type='submit' variant='outlined'>Signup</Button>
           </form>
           </div>

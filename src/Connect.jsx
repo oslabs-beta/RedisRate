@@ -85,6 +85,7 @@ const Connect = () => {
         }
         if (!login) {
           setIsDbConnected(false);
+          alert('We were unable to connect to your Redis Database, please ensure your server is up and running and your login information is correct and try again!');
           console.log('Invalid Login');
         }
       })
@@ -104,11 +105,11 @@ const Connect = () => {
   return (
     <div id='connectPage'>
       <div>
-        <form id='form' onSubmit={onSubmit}>
-          <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
-          <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} />
-          <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-          <Button id='butt' variant='outlined' type='submit'>Submit</Button>
+        <form id='connectform' onSubmit={onSubmit}>
+          <TextField className="formElement" margin="normal" label="Port" variant="outlined" required onChange={(e) => setPort(e.target.value)} />
+          <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" required onChange={(e) => setIpaddress(e.target.value)} />
+          <TextField className="formElement" margin="normal" type="password" label="Password" type="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
+          <Button id='submitbutt' variant='outlined' type='submit'>Submit</Button>
         </form>
       </div>
     </div>
