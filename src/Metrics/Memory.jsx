@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/index';
-import { Bar } from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
 import '../styles/styles.css';
 
 const Memory = () => {
@@ -20,59 +20,67 @@ const Memory = () => {
   usedMemory = parseInt(usedMemory, 10);
 
   if (uth === 'M') {
-    totalMemory = totalMemory / 1000;
+    usedMemory = usedMemory / 1000;
   }
 
-  const state = {
-    labels: ['Memory'],
+  if (uth === 'K') {
+    usedMemory = usedMemory / 1000000
+  }
+
+  const pieData = {
+    labels: ['Used Memory', 'Total Memory'],
     datasets: [
       {
         label: 'Used',
-        backgroundColor: '#bda00d',
-        borderColor: 'rgba(0,0,0,1)',
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
-        data: [usedMemory]
+        data: [usedMemory, totalMemory]
       },
+    ]
+  }
+
+  const fragData = {
+    labels: ['Memory Fragmentation Ratio'],
+    datasets: [
       {
-        label: 'Total',
-        backgroundColor: '#EDC911',
-        borderColor: 'rgba(0,0,0,1)',
+        label: 'Memory Fragmentation Ratio',
+        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
-        data: [totalMemory]
+        data: [memoryData.fragRatio]
       }
     ]
   }
 
   return ( 
     <div>
-      <h3>Memory Fragmentation Ratio: {memoryData.fragRatio}</h3>
-      <h3>Evicted Keys: {memoryData.evictedKeys}</h3>
-      <Bar
-        data={state}
-        options={{
-          title:{
-            display:true,
-            text:'Memory Usage',
-            fontSize:30
-          },
-          legend:{
-            display:true,
-            position:'bottom'
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
+      <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3>
+      <div id='memoryGraphs'>
+        <div>
+          <Pie data={pieData}/>
+        </div>
+        <div id='memoryBar'>
+          <Bar
+            data={fragData}
+            options={{
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      min: 0,
+                      beginAtZero: true,
+                    },
+                  },
+                ],
               },
-            ],
-          },
-        }}
-      />
+            }}
+          />
+        </div>
+      </div>
+      <h3>Evicted Keys: {memoryData.evictedKeys}</h3>
     </div>
   );
-
 };
 
 export default Memory;

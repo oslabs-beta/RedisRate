@@ -54,3 +54,12 @@ img {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#memoryGraphs {
+  display: flex;
+  flex-direction: column;
+}
+
+#memoryBar {
+  margin-top: 20px;
+}
+

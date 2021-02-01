@@ -14,7 +14,7 @@ const Latency = () => {
   }
 
   const data1 = {
-    labels: ['Activity - rename'],
+    labels: ['Activity'],
     datasets: [
       {
         label: 'Operations Per Second',
@@ -23,7 +23,7 @@ const Latency = () => {
           'rgba(255, 99, 132, 0.2)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
+          'rgba(0,0,0)',
         ],
         borderWidth: 1,
       },
@@ -34,7 +34,7 @@ const Latency = () => {
           'rgba(54, 162, 235, 0.2)'
         ],
         borderColor: [
-          'rgba(54, 162, 235, 1)'
+          'rgba(0,0,0)'
         ],
         borderWidth: 1,
       } 
@@ -51,7 +51,7 @@ const Latency = () => {
           'rgba(255, 206, 86, 0.2)'
         ],
         borderColor: [
-          'rgba(255, 206, 86, 1)'
+          'rgba(0,0,0)'
         ],
         borderWidth: 1,
       },
@@ -62,7 +62,7 @@ const Latency = () => {
           'rgba(75, 192, 192, 0.2)'
         ],
         borderColor: [
-          'rgba(75, 192, 192, 1)'
+          'rgba(0,0,0)'
         ],
         borderWidth: 1,
       },
@@ -73,7 +73,7 @@ const Latency = () => {
           'rgba(153, 102, 255, 0.2)'
         ],
         borderColor: [
-          'rgba(153, 102, 255, 1)'
+          'rgba(0,0,0)'
         ],
         borderWidth: 1,
       },
@@ -81,6 +81,10 @@ const Latency = () => {
   }
   
   const options = {
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
     scales: {
       yAxes: [
         {
@@ -90,11 +94,6 @@ const Latency = () => {
         },
       ],
     },
-    maintainAspectRatio: false,
-    legend: {
-      display: true,
-      position: bottom
-    }
   }
 
   return (
