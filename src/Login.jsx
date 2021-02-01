@@ -63,10 +63,10 @@ const Login = () => {
           <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
           <div>
             <form id='loginform' onSubmit={onSubmit}>
-              <TextField className="formElement" margin="normal" label="Username" variant="outlined" required onChange={(e) => setUsername(e.target.value)} />
-              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" required onChange={(e) => setPassword(e.target.value)} />
-              <Button id='button' variant='outlined' type='submit'>Login</Button>
-              <Button id='button' variant='outlined' onClick={signUpNow}>Sign Up</Button>
+              <TextField id="texts" className="formElement" margin="normal" label="Username" variant="outlined" required onChange={(e) => setUsername(e.target.value)} />
+              <TextField id="texts" className="formElement" margin="normal" type="password" label="Password" variant="outlined" required onChange={(e) => setPassword(e.target.value)} />
+              <Button id='loginbutt' variant='outlined' type='submit'>Login</Button>
+              <Button id='loginbutt' variant='outlined' onClick={signUpNow}>Sign Up</Button>
             </form>
           </div>
         </div>

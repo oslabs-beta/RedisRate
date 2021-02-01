@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Login from './Login';
+import Login from './Login.jsx';
 import SignUp from './SignUp.jsx';
 import Connect from './Connect.jsx';
 import Navigation from './Navigation.jsx';
@@ -21,10 +21,11 @@ import { colors } from '@material-ui/core';
 
 const theme = createMuiTheme ({
   palette: {
-    primary : { main: '#57CBCC', contrastText: '#fff'},
-    secondary: { main: '#c44569' },
-    background : { paper : '#596275', default : '#303952'},
-    text : { primary : '#FFFFFF'},
+    primary : { main: '#5bbd96', contrastText: '#fff'},
+    secondary: { main: '#ffffff'},
+    background : { paper : '#2e2e42', default : '#2e2e42'},
+    text : { primary : '#FFFFFF', secondary: '#bdbbc7'},
+    
   }
 });
 

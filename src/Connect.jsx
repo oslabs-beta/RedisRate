@@ -108,7 +108,7 @@ const Connect = () => {
         <form id='connectform' onSubmit={onSubmit}>
           <TextField className="formElement" margin="normal" label="Port" variant="outlined" required onChange={(e) => setPort(e.target.value)} />
           <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" required onChange={(e) => setIpaddress(e.target.value)} />
-          <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
+          <TextField className="formElement" margin="normal" type="password" label="Password" type="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
           <Button id='submitbutt' variant='outlined' type='submit'>Submit</Button>
         </form>
       </div>
