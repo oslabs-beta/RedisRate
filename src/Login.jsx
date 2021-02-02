@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import AppContext from './context/index';
 import Connect from './Connect.jsx';
 import {
@@ -18,9 +18,6 @@ const Login = () => {
 
   let history = useHistory();
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AppContext);
-
-  const { port, setPort } = useContext(AppContext);
-  const { ipaddress, setIpaddress } = useContext(AppContext);
   const { username, setUsername } = useContext(AppContext);
   const { password, setPassword } = useContext(AppContext);
 
@@ -40,7 +37,7 @@ const Login = () => {
         // check status code of 200 ?
         if (res["isUserLoggedIn"]){
           setIsUserLoggedIn(true);
-        }
+        } else alert("Username/Password are incorrect. Please try again, or Sign up Now!");
       })
       .catch(err => console.log('error username or password does not exist: ', err))
     }
@@ -64,16 +61,13 @@ const Login = () => {
       <Route exact path='/'>
         <div id='loginPage'>
           <img src={require("/src/styles/assets/redisrate1.png")} width="200"></img>
-          {/* <div id="logo">Redis Rate</div> */}
           <div>
-            <form id='form' onSubmit={onSubmit}>
-              {/* <TextField className="formElement" margin="normal" label="Port" variant="outlined" onChange={(e) => setPort(e.target.value)} />
-              <TextField className="formElement" margin="normal" label="IP Address" variant="outlined" onChange={(e) => setIpaddress(e.target.value)} /> */}
-              <TextField className="formElement" margin="normal" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
-              <TextField className="formElement" margin="normal" type="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
-              <Button id='butt' variant='outlined' type='submit'>Login</Button>
+            <form id='loginform' onSubmit={onSubmit}>
+              <TextField id="texts" className="formElement" margin="normal" label="Username" variant="outlined" required onChange={(e) => setUsername(e.target.value)} />
+              <TextField id="texts" className="formElement" margin="normal" type="password" label="Password" variant="outlined" required onChange={(e) => setPassword(e.target.value)} />
+              <Button id='loginbutt' variant='outlined' type='submit'>Login</Button>
+              <Button id='loginbutt' variant='outlined' onClick={signUpNow}>Sign Up</Button>
             </form>
-            <Button id='butt' variant='outlined' onClick={signUpNow}>Sign Up</Button>
           </div>
         </div>
       </Route>

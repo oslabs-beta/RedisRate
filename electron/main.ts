@@ -1,14 +1,13 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 
-let mainWindow: Electron.BrowserWindow | null; // what does this mean really
+let mainWindow: Electron.BrowserWindow | null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 700,
     // backgroundColor: "#45aaf2",
-
     webPreferences: {
       nodeIntegration: true,
     },
@@ -27,7 +26,3 @@ function createWindow() {
 
 app.on('ready', createWindow);
 app.allowRendererProcessReuse = true;
-
-// try {
-//   require('electron-reloader')(module)
-// } catch (_) {}

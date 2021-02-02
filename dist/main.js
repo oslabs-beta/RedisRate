@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var mainWindow; // what does this mean really
+var mainWindow;
 
 function createWindow() {
   mainWindow = new electron__WEBPACK_IMPORTED_MODULE_0__.BrowserWindow({
@@ -37,9 +37,7 @@ function createWindow() {
 }
 
 electron__WEBPACK_IMPORTED_MODULE_0__.app.on('ready', createWindow);
-electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true; // try {
-//   require('electron-reloader')(module)
-// } catch (_) {}
+electron__WEBPACK_IMPORTED_MODULE_0__.app.allowRendererProcessReuse = true;
 
 /***/ }),
 
@@ -94,8 +92,8 @@ module.exports = require("path");;
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
 /******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
@@ -115,7 +113,7 @@ module.exports = require("path");;
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */

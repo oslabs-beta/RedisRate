@@ -3,11 +3,17 @@ import AppContext from "./context/index";
 
 const Home = () => {
 
-   const {port, setPort} = useContext(AppContext);
+   const {port, ipaddress} = useContext(AppContext);
+
 
   return (
-    <div>
-      TEST HOME
+    <div id="connectedMessage">
+      <h3>Your Redis instance is running at:<br></br> 
+        Port: {port}<br></br>
+        IP Address: {ipaddress}
+      </h3>
+      
+      
     </div>
   )
 }
