@@ -13,24 +13,26 @@ const Throughput = () => {
     datasets: [
       {
         label: 'Connected Clients',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 1)',
         borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.connectedClients]
       },
       {
         label: 'Connected Replicas',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 1)',
         borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.connectedSlaves]
+        // data: [23]
       },
       {
         label: 'Blocked Clients',
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        backgroundColor: 'rgba(255,178,89,1)',
         borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.blockedClients]
+        // data: [43]
       }
     ]
   }

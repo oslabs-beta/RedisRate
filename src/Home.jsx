@@ -7,13 +7,12 @@ const Home = () => {
 
 
   return (
-    <div id="connectedMessage">
+    <div id="homeFont">
       <h3>Your Redis instance is running at:<br></br> 
         Port: {port}<br></br>
         IP Address: {ipaddress}
+
       </h3>
-      
-      
     </div>
   )
 }

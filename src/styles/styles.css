@@ -89,18 +89,10 @@ img {
 }
 
 
-/* #connectedMessage {
-  font-family: Ubuntu;
-}
-@font-face { font-family: roboto-regular; 
-  src: url('../font/Roboto-Regular.ttf'); } 
-h2{
-font-family: roboto-regular;
-} */
 
-#MemoryPageTitle {
+/* #MemoryPageTitle {
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 /* 
 #signupForm {
 
@@ -113,3 +105,8 @@ font-family: roboto-regular;
   margin-top: 20px;
 }
 */
+
+#homeFont {
+  font-family: 'Ubuntu', sans-serif;
+  font-style: italic;
+}
