@@ -12,6 +12,8 @@ const Memory = () => {
   // convert string values returned from redisDB
   let totalMemory = memoryData.all;
   let usedMemory = memoryData.used;
+  // let usedMemory = 90;
+
   const tth = totalMemory[totalMemory.length - 1];
   const uth = usedMemory[usedMemory.length - 1];
   totalMemory.replace(tth, '');
@@ -30,17 +32,22 @@ const Memory = () => {
     datasets: [
       {
         label: 'Used',
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        backgroundColor: ['rgba(207,255,94,1)', 'rgba(61,252,255,1)'],
         borderColor: 'rgba(0,0,0)',
-        borderWidth: 2,
+        borderWidth: 1,
         data: [usedMemory, totalMemory]
+        // data: [45, 100]
+
+
       },
     ]
   }
 
   return ( 
     <div>
-      <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3>
+      {/* <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3> */}
+      <h3>You are using 7.20G out of {memoryData.all} available memory</h3>
+
       <div>
         <Pie data={pieData}/>
       </div>

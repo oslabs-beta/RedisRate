@@ -20,8 +20,16 @@ RedisRate is in BETA phase. Pull requests are welcome. Make changes as you pleas
 ## ✨ Usage
 
 <!-- electron packager -->
+Sign in by entering your username and password. 
+<p align='center'>
+<img src='./src/styles/assets/login.gif' />
+</p>
 
-Sign in by entering your username and password. If this is your first time using the application, create an account by clicking sign up.
+
+If this is your first time using the application, create an account by clicking sign up.
+<p align='center'>
+<img src='./src/styles/assets/signup.gif' />
+</p>
 
 <!-- add a picture of sign up -->
 
@@ -30,15 +38,21 @@ Once logged in, make sure your Redis server is running and connect your Redis da
 <!-- add picture of port page -->
 
 Memory
-
+<p align='center'>
+<img src='./src/styles/assets/memory.gif' />
+</p>
 <!-- add picture of port page -->
 
 Latency
-
+<p align='center'>
+<img src='./src/styles/assets/latency.gif' />
+</p>
 <!-- add picture of port page -->
 
 Throughput
-
+<p align='center'>
+<img src='./src/styles/assets/throughput.gif' />
+</p>
 <!-- add picture of port page -->
 
 ## Developers<p align='center'>

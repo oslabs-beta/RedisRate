@@ -19,8 +19,9 @@ const Latency = () => {
       {
         label: 'Operations Per Second',
         data: [latencyData.opsPerSec],
+        // data: [11],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
+          'rgba(255,143,229,1)',
         ],
         borderColor: [
           'rgba(0,0,0)',
@@ -30,8 +31,9 @@ const Latency = () => {
       {
         label: 'Total Connections',
         data: [latencyData.totalConnections],
+        // data: [32],
         backgroundColor: [
-          'rgba(54, 162, 235, 0.2)'
+          'rgba(255,89,144,1)'
         ],
         borderColor: [
           'rgba(0,0,0)'
@@ -47,8 +49,9 @@ const Latency = () => {
       {
         label: 'Keyspace Hits',
         data: [latencyData.keyspaceHits],
+        // data: [47],
         backgroundColor: [
-          'rgba(255, 206, 86, 0.2)'
+          'rgba(255,252,89,1)'
         ],
         borderColor: [
           'rgba(0,0,0)'
@@ -58,8 +61,9 @@ const Latency = () => {
       {
         label: 'Keyspace Misses',
         data: [latencyData.keyspaceMisses],
+        // data: [36],
         backgroundColor: [
-          'rgba(75, 192, 192, 0.2)'
+          'rgba(186,255,89,1)'
         ],
         borderColor: [
           'rgba(0,0,0)'
@@ -69,8 +73,9 @@ const Latency = () => {
       {
         label: 'Keyspace Hit Rate',
         data: [latencyData.hitRate],
+        // data: [50],
         backgroundColor: [
-          'rgba(153, 102, 255, 0.2)'
+          'rgba(89,255,227,1)'
         ],
         borderColor: [
           'rgba(0,0,0)'
