@@ -2,20 +2,18 @@
 <img src='./src/styles/assets/redisrate1.png' />
 </p>
 
-RedisRate is a database analytic tool for visualizing performance metrics to aid in making informed decisions on database management.
+RedisRate is a simple to use and use-case agnostic analytic tool built to aid developers in making informed database management descisions through visualization of key Redis performance metrics.
 
 ## Beta Phase
 
-RedisRate is in BETA phase. Pull requests are welcome. Make changes as you please, but create an issue first when adding new feature.
+RedisRate is in BETA phase. Pull requests and contributions are welcome. Create an issue or contact a member of the team if you would like to contribute.
 
 ## Getting Started 🏁
 
 1. Clone this repository.
 2. Run `npm install`
-3. To run application in development,
-   `run npm run dev:electron`
-
-- //! put URI, tell them to connect sql for themselves
+3. To run application,
+   `npm run redis-rate`
 
 ## ✨ Usage
 
@@ -33,7 +31,7 @@ If this is your first time using the application, create an account by clicking 
 
 <!-- add a picture of sign up -->
 
-Once logged in, make sure your Redis server is running and connect your Redis database by entering the IP address, port number, and auth password. If you do not require a password for your Redis Server, simply leave the password input field blank, the app can connect without it. Upon a successful connection, it will redirect you to the homepage. Use the navigation menu to view specific metrics of your Redis instance.
+Once logged in, make sure your Redis server is running and connect your Redis database by entering its IP address, port number, and Redis auth password. If you have not configured your Redis Server to require a password, leave the password input field blank as the app can connect without it. Upon successful connection, use the navigation menu to view performance metrics of your Redis instance.
 
 <!-- add picture of port page -->
 
