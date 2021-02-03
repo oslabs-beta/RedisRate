@@ -9,15 +9,11 @@ configure({ adapter: new Adapter() });
 const wrapper = shallow(<Connect />)
 
 describe('Connection Page', () => {
-  /*
-    Added Jest 
-    Installed latest version adapter
-    Needed a .babelrc with presets "@babel/preset-env", "@babel/preset-react"
-    Downgraded React to reflect enzyme adapter
-    Kept server running during tests
-    STUDY DOC METHODS for test syntax
-  */
 
+  it("Test", () => {
+    expect(wrapper.contains([<span>Hello</span>, <div>World</div>])).toBe(false);
+  })
+  
   it("Renders a form", () => {
     expect(wrapper.find("form"))
   })
@@ -25,5 +21,10 @@ describe('Connection Page', () => {
   it("Renders elements with class name formElement", () => {
     expect(wrapper.find("form").hasClass("formElement"))
   })
+
+  it("Renders a submit button", () => {
+    expect(wrapper.find("submit"))
+  })
+
 
 });
