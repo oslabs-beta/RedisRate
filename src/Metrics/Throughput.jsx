@@ -24,7 +24,6 @@ const Throughput = () => {
         borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.connectedSlaves]
-        // data: [23]
       },
       {
         label: 'Blocked Clients',
@@ -32,7 +31,6 @@ const Throughput = () => {
         borderColor: 'rgba(0,0,0)',
         borderWidth: 2,
         data: [throughputData.blockedClients]
-        // data: [43]
       }
     ]
   }

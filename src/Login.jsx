@@ -23,7 +23,6 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // setIsUserLoggedIn(false);
     fetch('/login', {
       body: JSON.stringify({
         username,

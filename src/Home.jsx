@@ -8,10 +8,9 @@ const Home = () => {
 
   return (
     <div id="homeFont">
-      <h3>Your Redis instance is running at:<br></br> 
+      <h3>Your Redis instance is running at<br></br> 
         Port: {port}<br></br>
         IP Address: {ipaddress}
-
       </h3>
     </div>
   )

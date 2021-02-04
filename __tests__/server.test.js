@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const request = require('supertest');
 const server = 'http://localhost:4000';
-import regeneratorRuntime from "regenerator-runtime";
+require('dotenv').config()
+
 
 describe('User route', () => {
 
-   const MONGO_URI = 'mongodb+srv://mongodb:mongoDb@cluster0.drnfb.mongodb.net/sample_airbnb?retryWrites=true&w=majority';
+   const MONGO_URI = process.env.SECRET;
         
 	beforeAll((done) => {
       mongoose.connect(MONGO_URI);

@@ -18,7 +18,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-// components
 import Memory from './Metrics/Memory.jsx';
 import Home from './Home.jsx';
 import Latency from './Metrics/Latency.jsx'
