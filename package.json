@@ -1,21 +1,25 @@
 {
   "name": "RedisRate",
   "version": "1.0.0",
-  "description": "'Analytical Tool for Redis Performance'",
+  "description": "Visualization tool to track key Redis performance metrics",
+  "author": {
+    "name": "Matthew Marchand, Heidi Bang, Daeun Chung, Navi Dhillon",
+    "email": "redisrate@gmail.com",
+    "url": "http://redisrate.com"
+  },
   "main": "./dist/main.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:electron": "NODE_ENV=development nodemon ./server/server.js & webpack serve --config webpack.react.config.js --mode development & webpack --config webpack.electron.config.js --mode development && electron .",
-    "dev:react": "NODE_ENV=development webpack serve --config webpack.react.config.js --mode development",
-    "cy:run": "cypress run"
+    "start": "electron-forge start",
+    "test": "jest",
+    "redis-rate": "NODE_ENV=development nodemon ./server/server.js & webpack serve --config webpack.react.config.js --mode development & webpack --config webpack.electron.config.js --mode development && electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oslabs-beta/RedisRate.git"
   },
-  "author": "Team Cache Me if You Can",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/oslabs-beta/RedisRate.git"
   },
@@ -25,11 +29,13 @@
     "@material-ui/icons": "^4.11.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/webdriverio": "^5.0.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
+    "electron-squirrel-startup": "^1.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.11",
     "nodemon": "^2.0.7",
@@ -39,24 +45,38 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "redis": "^3.0.2",
-    "redis-info": "^3.0.8"
+    "redis-info": "^3.0.8",
+    "typescript": "^4.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@types/react-router-dom": "^5.1.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
-    "cypress": "^6.3.0",
     "electron": "^11.2.0",
-    "electron-reloader": "^1.2.0",
     "html-webpack-plugin": "^4.5.1",
+    "jest": "^26.6.3",
     "style-loader": "^2.0.0",
+    "supertest": "^6.1.3",
     "webpack": "^5.14.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
-  

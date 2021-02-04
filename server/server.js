@@ -39,7 +39,6 @@ app.post('/connect',
       connectedClients: res.locals.connectedClients,
       connectedSlaves: res.locals.connectedSlaves,
       totalCommands: res.locals.totalCommands,
-      // commandstats: res.locals.commandstats,
     });
   }
 )

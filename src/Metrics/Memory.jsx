@@ -12,7 +12,6 @@ const Memory = () => {
   // convert string values returned from redisDB
   let totalMemory = memoryData.all;
   let usedMemory = memoryData.used;
-  // let usedMemory = 90;
 
   const tth = totalMemory[totalMemory.length - 1];
   const uth = usedMemory[usedMemory.length - 1];
@@ -36,18 +35,13 @@ const Memory = () => {
         borderColor: 'rgba(0,0,0)',
         borderWidth: 1,
         data: [usedMemory, totalMemory]
-        // data: [45, 100]
-
-
       },
     ]
   }
 
   return ( 
     <div>
-      {/* <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3> */}
-      <h3>You are using 7.20G out of {memoryData.all} available memory</h3>
-
+      <h3>You are using {memoryData.used} out of {memoryData.all} available memory</h3>
       <div>
         <Pie data={pieData}/>
       </div>

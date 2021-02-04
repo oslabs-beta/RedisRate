@@ -53,10 +53,6 @@ redisController.redisConnect = (req, res, next) => {
     res.locals.evictedKeys = RedisDB.server_info.evicted_keys;
 
     // LATENCY
-    /*** threshold needs to be set *** 
-      latency monitor
-      slowlog
-    */
     res.locals.opsPerSec = RedisDB.server_info.instantaneous_ops_per_sec;
     res.locals.totalConnections = RedisDB.server_info.total_connections_received;
     // calculate keyspace hits rate from hits and misses
@@ -73,13 +69,7 @@ redisController.redisConnect = (req, res, next) => {
     res.locals.keyspace = RedisDB.server_info.keyspace;
     res.locals.totalCommands = RedisDB.server_info.total_commands_processed;
 
-    /* COMMANDSTATS
-    let stats;
-    RedisDB.info('commandstats', (err, result) => {
-      console.log(result)
-      // res.json(result)
-    })
-    */
+   
 
     return next();
   })

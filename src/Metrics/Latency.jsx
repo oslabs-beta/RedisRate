@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import '../styles/styles.css';
 import { Bar } from 'react-chartjs-2';
 import AppContext from '../context/index';
@@ -19,7 +19,6 @@ const Latency = () => {
       {
         label: 'Operations Per Second',
         data: [latencyData.opsPerSec],
-        // data: [11],
         backgroundColor: [
           'rgba(255,143,229,1)',
         ],
@@ -31,7 +30,6 @@ const Latency = () => {
       {
         label: 'Total Connections',
         data: [latencyData.totalConnections],
-        // data: [32],
         backgroundColor: [
           'rgba(255,89,144,1)'
         ],
@@ -49,7 +47,6 @@ const Latency = () => {
       {
         label: 'Keyspace Hits',
         data: [latencyData.keyspaceHits],
-        // data: [47],
         backgroundColor: [
           'rgba(255,252,89,1)'
         ],
@@ -61,7 +58,6 @@ const Latency = () => {
       {
         label: 'Keyspace Misses',
         data: [latencyData.keyspaceMisses],
-        // data: [36],
         backgroundColor: [
           'rgba(186,255,89,1)'
         ],
@@ -73,7 +69,6 @@ const Latency = () => {
       {
         label: 'Keyspace Hit Rate',
         data: [latencyData.hitRate],
-        // data: [50],
         backgroundColor: [
           'rgba(89,255,227,1)'
         ],
